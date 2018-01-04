@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Nginx安装 | nickboyer</title>
+    <!-- Bootstrap -->
+	<link href="css/editormd.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="css/main.css" rel="stylesheet"/>
+	
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></scr	ipt>
+    <![endif]-->
+  </head>
+ <body data-spy="scroll" data-target="#navbar-example">
+	<div class="headband"></div>
+	<div class="container padding0">
+		<div class="col-md-3 padding10">
+			<div class="header-inner">
+				<div class="site-brand" style="height:112px;background-color: #222;">
+					<div class="site-meta">
+						<a>
+							<span class="site-title" th:text="${dicts.websiteName}"></span>
+						</a>
+						<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+					</div>
+					<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+				</div>
+				<div id="site-nav-toggle-list" class="site-nav-toggle-list">
+					<ul class="menu">
+						<li class="menu-item">
+						  <a href="/index" rel="section">
+						  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							首页
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="about.html" rel="section">
+						  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						  关于</a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/tag" rel="section">
+						  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+							标签
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/categories" rel="section">
+						  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							分类
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/archives" rel="section">
+						  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+							归档
+						  </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
+				<div class="sidebar-nav col-xs-12">
+					<div class="col-xs-6 sidebar-nav-toc">
+						<li class="sidebar-nav-active" data-target="site-toc">文章目录</li>
+					</div>
+					
+					<div class="col-xs-6 sidebar-nav-overview">
+						<li data-target="site-overview">站点概览</li>
+					</div>
+					
+				</div>
+				<div class="sidebar-content">
+					<div class="site-pane site-toc sidebar-nav-active" id="navbar-example">
+						<ul class="nav nav-tabs nav-stacked" id="doc-toc">
+						</ul>
+					</div>
+					<div class="site-pane site-overview">
+						<div class="header-inner">
+							<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
+							<p class="site-author-name" th:text="${dicts.name}"></p>
+							<p class="site-description" th:text="${dicts.description}"></p>
+						</div>
+						<hr/>
+						<div class="site-state">
+							<div class="col-xs-4 site-state-item header-inner">
+							  <a href="/archives">
+								<span class="site-state-item-count">183</span>
+								<span class="site-state-item-name">日志</span>
+							  </a>
+							</div>
+							<div class="col-xs-4 site-state-item header-inner">
+							  <a href="/tags/detail.html">
+								<span class="site-state-item-count">222</span>
+								<span class="site-state-item-name">分类</span>
+							  </a>
+							</div>
+							<div class="col-xs-4 site-state-item header-inner">
+							  <a href="/tags/detail.html">
+								<span class="site-state-item-count">111</span>
+								<span class="site-state-item-name">标签</span>
+							  </a>
+							</div>
+						</div>
+						<div class="header-inner post-title a-label-color">
+							<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 padding10" style="background-color: #fff;">
+			<div class="col-md-12">
+				<h2 class="post-title">
+					<a class="post-title-link" th:text="${blog.header}"></a>
+				</h2>
+				<div class="post-title post-blog-label a-label-color">
+					<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text" th:text="'发表于 ' + ${#dates.format(blog.updateTime, 'yyyy-MM-dd')}"></span>
+					<span class="post-blog-text">|</span>
+					<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a th:text="${blog.categoryName}">技术文档</a>
+					<span class="post-blog-text">|</span>
+					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text" th:text="'阅读数 '+${blog.watch}"></span>
+				</div>
+				<div class=" markdown-body editormd-preview-container" id="doc-content">
+				</div>
+				<div class="post-tags">
+					<a th:each="tag,stat:${blog.tags}" th:href="@{'/tag?id='+${tag.id}}" rel="tag" th:text="'# '+${tag.name}"></a>
+				</div>	
+				<div class="post-blog-pn col-md-12">
+				  <div class="post-blog-prev col-xs-6">
+					  <a href="/2015/ten-years/" rel="next" title="十年">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>十年
+					  </a>
+				  </div>
+				  <div class="post-blog-next col-xs-6">
+					  <a href="/2015/interview/" rel="prev" title="希桅的第一次面试">
+						希桅的第一次面试<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					  </a>
+				  </div>
+				</div>
+			</div>
+			<div class="comments col-md-12"></div>
+		</div>
+	</div>
+
+	<!--back-to-top-->
+	<span id="top-link-block" class="hidden a-label-color-white">
+		<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+			<i class="glyphicon glyphicon-chevron-up"></i><span>100</span>%
+		</a>
+	</span>
+	<!-- 导入公共footer -->
+	<div th:replace="footer :: #common-footer"></div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/marked.min.js"></script>
+	<script src="js/nickboyer.js"></script>
+
+
+	<script th:inline="javascript">
+		//以下注释忽略js中关键字符
+		/*<![CDATA[*/
+	    $(function(){
+	    	var text = [[${blog.contentStr}]];
+			nickboyer.markdownToHtml("doc-toc","doc-content",text);
+		});
+   		/*]]>*/
+	</script>
+
+  </body>
+</html>

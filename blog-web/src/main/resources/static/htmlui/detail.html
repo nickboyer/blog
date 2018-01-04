@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Nginx安装 | nickboyer</title>
+    <!-- Bootstrap -->
+	<link href="css/editormd.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></scr	ipt>
+    <![endif]-->
+  </head>
+ <body data-spy="scroll" data-target="#navbar-example">
+	<div class="headband"></div>
+	<div class="container padding0">
+		<div class="col-md-3 padding10">
+			<div class="header-inner">
+				
+
+				<div class="site-brand" style="height:112px;background-color: #222;">
+					<div class="site-meta">
+						<a>
+							<span class="site-title">nickboyer</span>
+						</a>
+						<p class="site-subtitle">骑驴三十载，不知火烧是何味！</p>
+					</div>
+					<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+				</div>
+				<div id="site-nav-toggle-list" class="site-nav-toggle-list">
+					<ul class="menu">
+						<li class="menu-item">
+						  <a href="index.html" rel="section">
+						  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							首页
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="about.html" rel="section">
+						  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						  关于</a>
+						</li>
+						<li class="menu-item" >
+						  <a href="tags.html" rel="section">
+						  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+							标签
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="categories.html" rel="section">
+						  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							分类
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="archives.html" rel="section">
+						  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+							归档
+						  </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
+				<div class="sidebar-nav col-xs-12">
+					<div class="col-xs-6 sidebar-nav-toc">
+						<li class="sidebar-nav-active" data-target="site-toc">文章目录</li>
+					</div>
+					
+					<div class="col-xs-6 sidebar-nav-overview">
+						<li data-target="site-overview">站点概览</li>
+					</div>
+					
+				</div>
+				<div class="sidebar-content">
+					<div class="site-pane site-toc sidebar-nav-active" id="navbar-example">
+						<ul class="nav nav-tabs nav-stacked" id="doc-toc">
+							<!-- <li><a href="#section-1">第一部分</a>
+								<ul  class="nav nav-tabs nav-stacked">
+									<li><a href="#section-11">第一部分</a></li>
+									<li><a href="#section-12">第二部分</a></li>
+									<li><a href="#section-13">第三部分</a></li>
+									<li><a href="#section-14">第四部分</a></li>
+									<li><a href="#section-15">第五部分</a></li>
+								</ul>
+							</li>
+							<li><a href="#section-2">第二部分</a></li>
+							<li><a href="#section-3">第三部分</a></li>
+							<li><a href="#section-4">第四部分</a></li>
+							<li><a href="#section-5">第五部分</a></li> -->
+						</ul>
+					</div>
+					<div class="site-pane site-overview">
+						<div class="header-inner">
+							<img class="img-responsive center-block paddinglr60" src="http://39.106.24.47/static/8c5066ae3fc741b9a8da9cc603becd10.jpg"/>
+							<p class="site-author-name">nickboyer</p>
+							<p class="site-description">骑驴二十载，不知火烧是何味！</p>
+						</div>
+						<hr>
+						<div class="site-state">
+							<div class="col-xs-6 site-state-item header-inner">
+							  <a href="/archives">
+								<span class="site-state-item-count">183</span>
+								<span class="site-state-item-name">日志</span>
+							  </a>
+							</div>
+							<div class="col-xs-6 site-state-item header-inner">
+							  <a href="/tags/detail.html">
+								<span class="site-state-item-count">111</span>
+								<span class="site-state-item-name">标签</span>
+							  </a>
+							</div>
+						</div>
+						<div class="header-inner post-title a-label-color">
+							<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 padding10" style="background-color: #fff;">
+			<div class="col-md-12">
+				<h2 class="post-title">
+					<a class="post-title-link">nginx安装</a>
+				</h2>
+				<div class="post-title post-blog-label a-label-color">
+					<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于</span>2017-12-18
+					<!-- <span class="post-blog-text">|</span>
+					<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a>技术文档</a> -->
+					<span class="post-blog-text">|</span>
+					<span class="glyphicon glyphicon-tag" aria-hidden="true"></span><span class="post-blog-text">标签于</span><a>nginx</a>
+					<span class="post-blog-text">|</span>
+					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text">阅读数</span>999
+				</div>
+				<div class=" markdown-body editormd-preview-container" id="doc-content">
+				</div>
+				<div class="post-tags">
+					<a href="/tags/写作/" rel="tag"># 写作</a>
+					<a href="/tags/目标叙事高手/" rel="tag"># 目标叙事高手</a>
+					<a href="/tags/知乎/" rel="tag"># 知乎</a>
+				</div>	
+				<div class="post-blog-pn col-md-12">
+				  <div class="post-blog-prev col-xs-6">
+					  <a href="/2015/ten-years/" rel="next" title="十年">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>十年
+					  </a>
+				  </div>
+				  <div class="post-blog-next col-xs-6">
+					  <a href="/2015/interview/" rel="prev" title="希桅的第一次面试">
+						希桅的第一次面试<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					  </a>
+				  </div>
+				</div>
+			</div>
+			<div class="comments col-md-12"></div>
+		</div>
+	</div>
+
+	<!--back-to-top-->
+	<span id="top-link-block" class="hidden a-label-color-white">
+		<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+			<i class="glyphicon glyphicon-chevron-up"></i><span>100</span>%
+		</a>
+	</span>
+	<footer class="bs-docs-footer">
+		<div class="container text-center copyright">
+			<p>Copyright © 2013-2017 nickboyer</p>
+		</div>
+	</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/marked.min.js"></script>
+	<script src="js/nickboyer.js"></script>
+
+
+<script type="text/javascript">
+	
+
+    $(function(){
+	
+	
+
+       var text = 
+ '### 安装Erlang环境\n'+
+'\n'+
+'> `Erlang`环境安装前检查`erlang`和`rabbitmq`兼容版本\n'+
+'    [参考地址http://www.rabbitmq.com/which-erlang.html](http://www.rabbitmq.com/which-erlang.html)\n'+
+'\n'+
+'RabbitMQ | Minimum required Erlang/OTP | Maximum supported Erlang/OTP \n'+
+'---|--- | --- |---\n'+
+'3.7.x | 19.3 | 20.1.x\n'+
+'3.6.15 | 19.3 | 20.1.x\n'+
+'3.6.14/3.6.13/3.6.12/3.6.11 | R16B03 | 20.1.x\n'+
+'3.6.10/3.6.9/3.6.8/3.6.7/3.6.6/3.6.5/3.6.4 | R16B03 | 19.3.x\n'+
+'3.6.3/3.6.2/3.6.1/3.6.0 | R16B03 | 18.3.x\n'+
+'3.5.x | R14B04 | 17.5.x\n'+
+'3.4.x | R13B03 | 16B03\n'+
+'\n'+
+'    wget http://www.rabbitmq.com/releases/erlang/erlang-19.0-1.el6.x86_64.rpm\n'+
+'    \n'+
+'    yum install -y erlang-19.0-1.el6.x86_64.rpm\n'+
+'    \n'+
+'### rabbitmq安装\n'+
+'> [全版本地址：https://github.com/rabbitmq/rabbitmq-server/releases](https://github.com/rabbitmq/rabbitmq-server/releases)\n'+
+'\n'+
+'    wget https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_12_rc3/rabbitmq-server-3.6.11.903-1.el6.noarch.rpm\n'+
+'    \n'+
+'    yum install -y rabbitmq-server-3.6.11.903-1.el6.noarch.rpm\n'+
+'    \n'+
+'### 相关命令\n'+
+'\n'+
+'@nickboyer\n'+
+'\n'+
+'    RabbitMq相关命令:\n'+
+'    启用管理插件\n'+
+'    rabbitmq-plugins enable rabbitmq_management\n'+
+'    禁用管理插件\n'+
+'    rabbitmq-plugins disable rabbitmq_management\n'+
+'    启动: \n'+
+'    service rabbitmq-server start\n'+
+'    关闭:\n'+
+'    rabbitmqctl stop\n'+
+'    service rabbitmq-server stop\n'+
+'    验证状态(是否启动)\n'+
+'    rabbitmqctl status  有进程存在则说明成功\n'+
+'    创建用户(guest不允许远程访问)\n'+
+'    rabbitmqctl add_user nickboyer nickboyer\n'+
+'    删除用户\n'+
+'    rabbitmqctl  delete_user  [用户名]\n'+
+'    给nickboeyr赋予角色\n'+
+'    rabbitmqctl set_user_tags nickboyer administrator\n'+
+'    给角色授权\n'+
+'    rabbitmqctl  set_permissions  -p  \'/\'  nickboyer \'.\' \'.\' \'.*\'\n'+
+'    清除所有队列\n'+
+'    rabbitmqctl stop_app\n'+
+'    rabbitmqctl reset\n'+
+'    rabbitmqctl start_app\n'+
+'    查看所有队列信息\n'+
+'    rabbitmqctl list_queues\n'+
+'    查看所有用户\n'+
+'    rabbitmqctl list_users\n'+
+'    查看安装插件列表:\n'+
+'    rabbitmq-plugins list\n'+
+'    然后后管服务器访问http://10.0.24.20:15672/  用户名nickboyer   密码:nickboyer';
+
+	nickboyer.markdownToHtml("doc-toc","doc-content",text);
+	});
+</script>
+
+  </body>
+</html>

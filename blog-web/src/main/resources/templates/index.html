@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
+	<link rel="bookmark" href="favicon.ico"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>首页 | nickboyer</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="css/main.css" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></scr	ipt>
+    <![endif]-->
+  </head>
+  <body>
+	<div class="headband"></div>
+	<div class="container padding0">
+		<div class="col-md-3 padding10">
+			<div class="header-inner">
+				<div class="site-brand" style="height:112px;background-color: #222;">
+					<div class="site-meta">
+						<a>
+							<span class="site-title" th:text="${dicts.websiteName}"></span>
+						</a>
+						<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+					</div>
+					<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+				</div>
+				<div id="site-nav-toggle-list" class="site-nav-toggle-list">
+					<ul class="menu">
+						<li class="menu-item menu-item-active">
+						  <a href="/index" rel="section">
+						  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							首页
+						  <span class="point"/>
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/about" rel="section">
+						  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						  关于</a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/tag" rel="section">
+						  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+							标签
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/categories" rel="section">
+						  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							分类
+						  </a>
+						</li>
+						<li class="menu-item" >
+						  <a href="/archives" rel="section">
+						  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+							归档
+						  </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
+				<div class="header-inner">
+					<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
+					<p class="site-author-name" th:text="${dicts.name}"></p>
+					<p class="site-description" th:text="${dicts.description}"></p>
+				</div>
+				<hr/>
+				<div class="site-state">
+					<div class="col-xs-4 site-state-item header-inner">
+					  <a href="/archives">
+						<span class="site-state-item-count">183</span>
+						<span class="site-state-item-name">日志</span>
+					  </a>
+					</div>
+					<div class="col-xs-4 site-state-item header-inner">
+					  <a href="/tags/detail.html">
+						<span class="site-state-item-count">222</span>
+						<span class="site-state-item-name">分类</span>
+					  </a>
+					</div>
+					<div class="col-xs-4 site-state-item header-inner">
+					  <a href="/tags/detail.html">
+						<span class="site-state-item-count">111</span>
+						<span class="site-state-item-name">标签</span>
+					  </a>
+					</div>
+				</div>
+				<div class="header-inner post-title a-label-color">
+					<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9 padding10" style="background-color: #fff;">
+			<div id="post-content"></div>
+			<div id="post-toc" class="col-md-12 text-center">
+				
+			</div>
+		</div>
+	</div>
+
+	<!--back-to-top-->
+	<span id="top-link-block" class="hidden a-label-color-white">
+		<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+			<i class="glyphicon glyphicon-chevron-up"></i><span>100</span>%
+		</a>
+	</span>
+	<!-- 导入公共footer -->
+	<div th:replace="footer :: #common-footer"></div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/marked.min.js"></script>
+	<script src="js/nickboyer.js"></script>
+	<script th:inline="javascript">
+	//以下注释忽略js中关键字符
+	/*<![CDATA[*/
+		$(function(){
+			var page = [[${page}]];
+			var list = page.page;
+			$.each(list,function(index,data){
+				var html = 
+				'	<div class="col-md-12">'+
+				'	<h2 class="post-title">'+
+				'		<a class="post-title-link">'+data.header+'</a>'+
+				'	</h2>'+
+				'	<div class="post-title post-blog-label a-label-color">'+
+				'		<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于 '+ formatDate(new Date(),'yyyy-MM-dd')+'</span>' +
+				'		<span class="post-blog-text">|</span>'+
+				'		<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a href="#">'+data.categoryName+'</a>'+
+				'		<span class="post-blog-text">|</span>'+
+				'		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text">阅读数</span>'+ data.watch +
+				'	</div>'+
+				nickboyer.markdownToHtml('','',data.introStr) + 
+				'	<div class="post-button text-center a-label-color"><a class="btn" href="detail?id='+data.id+'" rel="contents">阅读全文 »</a></div>'+
+				'	<footer class="post-footer"><div class="post-eof"></div></footer>'+
+				'</div>';
+				$("#post-content").append(html);
+			});
+			html = '<ul class="pagination">';
+			html = html + '<li><a class="btn';
+			if(page.pageNum == '1'){
+				html = html + ' disabled';	
+			}
+			html = html + '" href="index?pageNum='+(page.pageNum-1)+'">&laquo;</a></li>';
+			for (var i=1;i<=page.pages;i++){
+				html = html + '<li';
+				if(page.pageNum == i){
+					html = html + ' class="active" ';
+				}
+				html = html + '><a href="index?pageNum='+i+'">'+i+'</a></li>';
+			}
+			html = html + '<li><a class="btn';
+			if(page.pageNum == page.pages){
+				html = html + ' disabled';	
+			}
+			html = html + '" href="index?pageNum='+(page.pageNum+1)+'">&raquo;</a></li>';
+			html = html + "</ul>";
+			$("#post-toc").html(html);
+		
+		});
+	/*]]>*/
+	</script>
+  </body>
+</html>

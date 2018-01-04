@@ -58,7 +58,14 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
 	 */
 	@Override
 	public Blogs findDetail(String id) {
+		// 获取详情
 		Blogs blog = blogsMapper.selectById(id);
+		// 获取上一个，笑一个
+		Blogs prev = blogsMapper.selectPrev(id);
+		blog.setPrev(prev);
+		Blogs next = blogsMapper.selectNext(id);
+		blog.setNext(next);
+		// 获取关联标签
 		List<Tags> tags = blogsMapper.selectTagsById(id);
 		blog.setTags(tags);
 		return blog;

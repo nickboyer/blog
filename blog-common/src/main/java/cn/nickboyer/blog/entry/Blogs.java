@@ -50,6 +50,38 @@ public class Blogs implements Serializable {
 
 	private List<Tags> tags;
 
+	private Blogs prev;
+
+	private Blogs next;
+
+	/**
+	 * @return prev
+	 */
+	public Blogs getPrev() {
+		return prev;
+	}
+
+	/**
+	 * @param prev 要设置的 prev
+	 */
+	public void setPrev(Blogs prev) {
+		this.prev = prev;
+	}
+
+	/**
+	 * @return next
+	 */
+	public Blogs getNext() {
+		return next;
+	}
+
+	/**
+	 * @param next 要设置的 next
+	 */
+	public void setNext(Blogs next) {
+		this.next = next;
+	}
+
 	/**
 	 * @return tags
 	 */

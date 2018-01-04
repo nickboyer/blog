@@ -104,7 +104,7 @@
 		</div>
 		<div class="col-md-9 padding10" style="background-color: #fff;">
 			<div class="tags-title col-xs-12">
-				<h5>目前一共255个标签</h5>
+				<h5 th:text="'目前一共'+${#lists.size(tags)}+'个标签'"></h5>
 			</div>
 			<div class="tags-content col-xs-12">
 				<a th:each="tag,stat:${tags}" th:href="@{'/tag?id='+${tag.id}}" th:text="${tag.name}" th:style="'font-size:'+${tag.size}+'px; color:'+${tag.color}"></a>
@@ -125,5 +125,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	<script th:inline="javascript">
+	//以下注释忽略js中关键字符
+	/*<![CDATA[*/
+		$(function(){
+			var tags = [[${tags}]];
+			console.log(tags.length);
+		});
+		/*]]>*/
+		</script>
   </body>
 </html>

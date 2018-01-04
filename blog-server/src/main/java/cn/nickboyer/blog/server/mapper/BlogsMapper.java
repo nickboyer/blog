@@ -55,4 +55,24 @@ public interface BlogsMapper {
 	@Select("select a.id,a.name from tags a,blog_tag_relation b where a.id = b.tag_id and b.blog_id = #{id}")
 	List<Tags> selectTagsById(String id);
 
+	/**
+	 * @param id
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月4日 下午10:17:36
+	 */
+	@Select("select id,header from blogs where id < #{id} order by id desc limit 1")
+	Blogs selectPrev(String id);
+
+	/**
+	 * @param id
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月4日 下午10:17:41
+	 */
+	@Select("select id,header from blogs where id > #{id} order by id asc limit 1")
+	Blogs selectNext(String id);
+
 }

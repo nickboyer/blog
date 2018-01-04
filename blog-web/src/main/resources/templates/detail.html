@@ -139,13 +139,13 @@
 				</div>	
 				<div class="post-blog-pn col-md-12">
 				  <div class="post-blog-prev col-xs-6">
-					  <a href="/2015/ten-years/" rel="next" title="十年">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>十年
+					  <a th:if="${blog.prev != null}" th:href="@{'/detail?id='+${blog.prev.id}}" rel="prev" th:title="${blog.prev.header}">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span th:text="${blog.prev.header}"></span>
 					  </a>
 				  </div>
 				  <div class="post-blog-next col-xs-6">
-					  <a href="/2015/interview/" rel="prev" title="希桅的第一次面试">
-						希桅的第一次面试<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					  <a th:if="${blog.next != null}" th:href="@{'/detail?id='+${blog.next.id}}" rel="next" th:title="${blog.next.header}">
+						<span th:text="${blog.next.header}"></span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					  </a>
 				  </div>
 				</div>

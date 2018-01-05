@@ -317,6 +317,7 @@ pre {
 .post-button a:hover {
 	color: #fff;
 	background: #555;
+	text-decoration: none;
 }
 /* 翻页 */
 .pagination li a{

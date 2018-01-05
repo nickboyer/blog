@@ -9,6 +9,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>首页 | nickboyer</title>
     <!-- Bootstrap -->
+    <link href="css/editormd.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="css/main.css" rel="stylesheet"/>
 
@@ -78,19 +79,19 @@
 				<div class="site-state">
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/archives">
-						<span class="site-state-item-count">183</span>
+						<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
 						<span class="site-state-item-name">日志</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">222</span>
+						<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
 						<span class="site-state-item-name">分类</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">111</span>
+						<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
 						<span class="site-state-item-name">标签</span>
 					  </a>
 					</div>
@@ -133,7 +134,7 @@
 				var html = 
 				'	<div class="col-md-12">'+
 				'	<h2 class="post-title">'+
-				'		<a class="post-title-link">'+data.header+'</a>'+
+				'		<a class="post-title-link" href="detail?id='+data.id+'">'+data.header+'</a>'+
 				'	</h2>'+
 				'	<div class="post-title post-blog-label a-label-color">'+
 				'		<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于 '+ formatDate(new Date(),'yyyy-MM-dd')+'</span>' +
@@ -141,9 +142,9 @@
 				'		<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a href="#">'+data.categoryName+'</a>'+
 				'		<span class="post-blog-text">|</span>'+
 				'		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text">阅读数</span>'+ data.watch +
-				'	</div>'+
+				'	</div><div class="markdown-body editormd-preview-container">'+
 				nickboyer.markdownToHtml('','',data.introStr) + 
-				'	<div class="post-button text-center a-label-color"><a class="btn" href="detail?id='+data.id+'" rel="contents">阅读全文 »</a></div>'+
+				'	<div><div class="post-button text-center a-label-color"><a class="btn" href="detail?id='+data.id+'" rel="contents">阅读全文 »</a></div>'+
 				'	<footer class="post-footer"><div class="post-eof"></div></footer>'+
 				'</div>';
 				$("#post-content").append(html);

@@ -55,4 +55,13 @@ public interface TagsMapper {
 	@Select("select a.* from blogs a,blog_tag_relation b where a.id = b.blog_id and b.tag_id = #{id}")
 	List<Blogs> selectBlogsByTagId(String id);
 
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午1:22:20
+	 */
+	@Select("select count(1) from tags")
+	int count();
+
 }

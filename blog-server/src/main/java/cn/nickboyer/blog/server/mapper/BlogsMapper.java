@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import cn.nickboyer.blog.entry.Blogs;
 import cn.nickboyer.blog.entry.Tags;
@@ -62,7 +63,7 @@ public interface BlogsMapper {
 	 * @authz Kang.Y
 	 * @createtime 2018年1月4日 下午10:17:36
 	 */
-	@Select("select id,header from blogs where id < #{id} order by id desc limit 1")
+	@Select("select id,header from blogs where id > #{id} order by id asc limit 1")
 	Blogs selectPrev(String id);
 
 	/**
@@ -72,7 +73,25 @@ public interface BlogsMapper {
 	 * @authz Kang.Y
 	 * @createtime 2018年1月4日 下午10:17:41
 	 */
-	@Select("select id,header from blogs where id > #{id} order by id asc limit 1")
+	@Select("select id,header from blogs where id < #{id} order by id desc limit 1")
 	Blogs selectNext(String id);
+
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午1:21:34
+	 */
+	@Select("select count(1) from blogs")
+	int count();
+
+	/**
+	 * @param id
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午1:41:39
+	 */
+	@Update("update blogs set watch = watch + 1 where id = #{id}")
+	void updateWatch(String id);
 
 }

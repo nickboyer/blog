@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" href="favicon.ico"/>
 	<link rel="bookmark" href="favicon.ico"/>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Nginx安装 | nickboyer</title>
+    <title th:text="${blog.header}+' | nickboyer'"></title>
     <!-- Bootstrap -->
 	<link href="css/editormd.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -95,19 +95,19 @@
 						<div class="site-state">
 							<div class="col-xs-4 site-state-item header-inner">
 							  <a href="/archives">
-								<span class="site-state-item-count">183</span>
+								<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
 								<span class="site-state-item-name">日志</span>
 							  </a>
 							</div>
 							<div class="col-xs-4 site-state-item header-inner">
 							  <a href="/tags/detail.html">
-								<span class="site-state-item-count">222</span>
+								<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
 								<span class="site-state-item-name">分类</span>
 							  </a>
 							</div>
 							<div class="col-xs-4 site-state-item header-inner">
 							  <a href="/tags/detail.html">
-								<span class="site-state-item-count">111</span>
+								<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
 								<span class="site-state-item-name">标签</span>
 							  </a>
 							</div>

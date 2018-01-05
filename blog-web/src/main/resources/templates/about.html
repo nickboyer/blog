@@ -25,14 +25,12 @@
 	<div class="container padding0">
 		<div class="col-md-3 padding10">
 			<div class="header-inner">
-				
-
 				<div class="site-brand" style="height:112px;background-color: #222;">
 					<div class="site-meta">
 						<a>
-							<span class="site-title">nickboyer</span>
+							<span class="site-title" th:text="${dicts.websiteName}"></span>
 						</a>
-						<p class="site-subtitle">骑驴三十载，不知火烧是何味！</p>
+						<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
 					</div>
 					<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
 				</div>
@@ -75,27 +73,27 @@
 			<!--<div class="" style="height:250px;background-color: #bbb;"></div>-->
 			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
 				<div class="header-inner">
-					<img class="img-responsive center-block paddinglr60" src="http://39.106.24.47/static/8c5066ae3fc741b9a8da9cc603becd10.jpg"/>
-					<p class="site-author-name">nickboyer</p>
-					<p class="site-description">骑驴二十载，不知火烧是何味！</p>
+					<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
+					<p class="site-author-name" th:text="${dicts.name}"></p>
+					<p class="site-description" th:text="${dicts.description}"></p>
 				</div>
 				<hr/>
 				<div class="site-state">
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/archives">
-						<span class="site-state-item-count">183</span>
+						<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
 						<span class="site-state-item-name">日志</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">222</span>
+						<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
 						<span class="site-state-item-name">分类</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">111</span>
+						<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
 						<span class="site-state-item-name">标签</span>
 					  </a>
 					</div>

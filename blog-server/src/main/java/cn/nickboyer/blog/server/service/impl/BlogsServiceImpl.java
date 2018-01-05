@@ -60,7 +60,7 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
 	public Blogs findDetail(String id) {
 		// 获取详情
 		Blogs blog = blogsMapper.selectById(id);
-		// 获取上一个，笑一个
+		// 获取上一个，下一个
 		Blogs prev = blogsMapper.selectPrev(id);
 		blog.setPrev(prev);
 		Blogs next = blogsMapper.selectNext(id);
@@ -68,6 +68,8 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
 		// 获取关联标签
 		List<Tags> tags = blogsMapper.selectTagsById(id);
 		blog.setTags(tags);
+		// 阅读次数
+		blogsMapper.updateWatch(id);
 		return blog;
 	}
 

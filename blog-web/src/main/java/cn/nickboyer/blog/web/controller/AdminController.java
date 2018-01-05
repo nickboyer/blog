@@ -9,9 +9,14 @@
  */
 package cn.nickboyer.blog.web.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import cn.nickboyer.blog.web.cloud.IRedisService;
 
 /**
  * @title
@@ -21,6 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class AdminController extends BaseComponent {
+
+	@Autowired
+	private IRedisService redisService;
 
 	/**
 	 * 首页
@@ -35,6 +43,9 @@ public class AdminController extends BaseComponent {
 	@RequestMapping("/about")
 	public ModelAndView index(ModelAndView mv) {
 
+		// 获取字典数据
+		Map<String, String> dicts = redisService.findAllDicts();
+		mv.addObject("dicts", dicts);
 		mv.setViewName("about");
 		return mv;
 

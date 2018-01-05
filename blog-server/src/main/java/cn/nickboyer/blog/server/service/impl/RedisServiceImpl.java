@@ -44,4 +44,27 @@ public class RedisServiceImpl extends BaseService implements IRedisService {
 		Map<String, String> entries = ops.entries();
 		return entries;
 	}
+
+	/**
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.blog.server.service.IRedisService#delAllDicts()
+	 */
+	@Override
+	public void delAllDicts() {
+
+		redis.delete(Const.REDIS_DICTS);
+	}
+
+	/**
+	 * （no Javadoc）
+	 * 
+	 * @see cn.nickboyer.blog.server.service.IRedisService#addDicts(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void addDicts(String name, String value) {
+
+		BoundHashOperations<String, String, String> ops = redis.boundHashOps(Const.REDIS_DICTS);
+		ops.put(name, value);
+	}
 }

@@ -80,19 +80,19 @@
 				<div class="site-state">
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/archives">
-						<span class="site-state-item-count">183</span>
+						<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
 						<span class="site-state-item-name">日志</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">222</span>
+						<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
 						<span class="site-state-item-name">分类</span>
 					  </a>
 					</div>
 					<div class="col-xs-4 site-state-item header-inner">
 					  <a href="/tags/detail.html">
-						<span class="site-state-item-count">111</span>
+						<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
 						<span class="site-state-item-name">标签</span>
 					  </a>
 					</div>
@@ -107,7 +107,7 @@
 				<h5 th:text="'目前一共'+${#lists.size(tags)}+'个标签'"></h5>
 			</div>
 			<div class="tags-content col-xs-12">
-				<a th:each="tag,stat:${tags}" th:href="@{'/tag?id='+${tag.id}}" th:text="${tag.name}" th:style="'font-size:'+${tag.size}+'px; color:'+${tag.color}"></a>
+				<a th:each="tag,stat:${tags}" th:href="@{'/tag?id='+${tag.id}}" th:text="${tag.name}" th:style="'font-size:'+${tag.size}+'px; color:rgb('+${tag.color}+','+${tag.color}+','+${tag.color}+');'"></a>
 			</div>
 		</div>
 	</div>
@@ -125,14 +125,5 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
-	<script th:inline="javascript">
-	//以下注释忽略js中关键字符
-	/*<![CDATA[*/
-		$(function(){
-			var tags = [[${tags}]];
-			console.log(tags.length);
-		});
-		/*]]>*/
-		</script>
   </body>
 </html>

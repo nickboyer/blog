@@ -20,4 +20,21 @@ import java.util.Map;
 public interface IRedisService {
 
 	public Map<String, String> findAllDicts();
+
+	/**
+	 * 
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午12:25:03
+	 */
+	public void delAllDicts();
+
+	/**
+	 * @param name
+	 * @param value
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午12:25:59
+	 */
+	public void addDicts(String name, String value);
 }

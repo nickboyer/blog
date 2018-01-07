@@ -7,11 +7,11 @@
 	<link rel="shortcut icon" href="favicon.ico"/>
 	<link rel="bookmark" href="favicon.ico"/>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>首页 | nickboyer</title>
+    <title>归档 | nickboyer</title>
     <!-- Bootstrap -->
-    <link href="css/editormd.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="css/main.css" rel="stylesheet"/>
+	<link href="css/editormd.min.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,11 +36,10 @@
 					</div>
 					<div id="site-nav-toggle-list" class="site-nav-toggle-list">
 						<ul class="menu">
-							<li class="menu-item menu-item-active" >
+							<li class="menu-item">
 							  <a href="/" rel="section">
 							  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 								首页
-								<span class="point"/>
 							  </a>
 							</li>
 							<li class="menu-item" >
@@ -70,6 +69,7 @@
 						</ul>
 					</div>
 				</div>
+			<!--<div class="" style="height:250px;background-color: #bbb;"></div>-->
 			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
 				<div th:replace="common :: #header-inner"></div>
 				<hr/>
@@ -77,10 +77,23 @@
 				<div th:replace="common :: #github"></div>
 			</div>
 		</div>
-		<div class="col-md-9 padding10" style="background-color: #fff;">
-			<div id="post-content"></div>
-			<div id="post-toc" class="col-md-12 text-center">
-				
+		<div class="col-md-9 col-xs-12 padding10" style="background-color: #fff;">
+			<div class="col-md-12">
+				<div class="category-title col-xs-12">
+					<h3><span th:text="${tag.name}"></span><span class="undertone">标签</span></h3>
+				</div>
+				<div class="archives-content col-xs-12">
+					<ul class="nickboyer-timeline col-xs-12">
+						<li th:each="archive,stat:${tag.archives}" class="nickboyer-timeline-item col-xs-12">
+							<div class="nickboyer-timeline-content col-xs-12">
+							  <h3 class="nickboyer-timeline-title col-xs-12" th:text="${archive.time}"></h3>
+							  <ul class="col-xs-12">
+								<li th:each="blog,stat:${archive.list}"><a th:href="@{'/detail?id='+${blog.id}}" th:text="${blog.header}"></a></li>
+							  </ul>
+							</div>
+						 </li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -98,56 +111,5 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/marked.min.js"></script>
-	<script src="js/nickboyer.js"></script>
-	<script th:inline="javascript">
-	//以下注释忽略js中关键字符
-	/*<![CDATA[*/
-		$(function(){
-			var page = [[${page}]];
-			var list = page.page;
-			$.each(list,function(index,data){
-				var html = 
-				'	<div class="col-md-12">'+
-				'	<h2 class="post-title">'+
-				'		<a class="post-title-link" href="detail?id='+data.id+'">'+data.header+'</a>'+
-				'	</h2>'+
-				'	<div class="post-title post-blog-label a-label-color">'+
-				'		<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于 '+ formatDate(new Date(),'yyyy-MM-dd')+'</span>' +
-				'		<span class="post-blog-text">|</span>'+
-				'		<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a href="/category?id='+data.categoryId+'">'+data.categoryName+'</a>'+
-				'		<span class="post-blog-text">|</span>'+
-				'		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text">阅读数</span>'+ data.watch +
-				'	</div><div class="markdown-body editormd-preview-container">'+
-				nickboyer.markdownToHtml('','',data.introStr) + 
-				'	<div><div class="post-button text-center a-label-color"><a class="btn" href="detail?id='+data.id+'" rel="contents">阅读全文 »</a></div>'+
-				'	<footer class="post-footer"><div class="post-eof"></div></footer>'+
-				'</div>';
-				$("#post-content").append(html);
-			});
-			html = '<ul class="pagination">';
-			html = html + '<li><a class="btn';
-			if(page.pageNum == '1'){
-				html = html + ' disabled';	
-			}
-			html = html + '" href="index?pageNum='+(page.pageNum-1)+'">&laquo;</a></li>';
-			for (var i=1;i<=page.pages;i++){
-				html = html + '<li';
-				if(page.pageNum == i){
-					html = html + ' class="active" ';
-				}
-				html = html + '><a href="index?pageNum='+i+'">'+i+'</a></li>';
-			}
-			html = html + '<li><a class="btn';
-			if(page.pageNum == page.pages){
-				html = html + ' disabled';	
-			}
-			html = html + '" href="index?pageNum='+(page.pageNum+1)+'">&raquo;</a></li>';
-			html = html + "</ul>";
-			$("#post-toc").html(html);
-		
-		});
-	/*]]>*/
-	</script>
   </body>
 </html>

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import cn.nickboyer.blog.entry.Dicts;
 import cn.nickboyer.blog.server.mapper.BlogsMapper;
-import cn.nickboyer.blog.server.mapper.CategorysMapper;
+import cn.nickboyer.blog.server.mapper.CategoriesMapper;
 import cn.nickboyer.blog.server.mapper.DictsMapper;
 import cn.nickboyer.blog.server.mapper.TagsMapper;
 import cn.nickboyer.blog.server.service.IRedisService;
@@ -38,7 +38,7 @@ public class DictsServiceTask {
 	@Autowired
 	private BlogsMapper blogsMapper;
 	@Autowired
-	private CategorysMapper categorysMapper;
+	private CategoriesMapper categoriesMapper;
 	@Autowired
 	private IRedisService redisService;
 
@@ -56,7 +56,7 @@ public class DictsServiceTask {
 		}
 		// 1.3. 统计日志、分类、标签数量
 		int blogsCount = blogsMapper.count();
-		int categorysCount = categorysMapper.count();
+		int categorysCount = categoriesMapper.count();
 		int tagsCount = tagsMapper.count();
 		redisService.addDicts("blogsCount", blogsCount + "");
 		redisService.addDicts("categorysCount", categorysCount + "");

@@ -37,7 +37,7 @@
 				<div id="site-nav-toggle-list" class="site-nav-toggle-list">
 					<ul class="menu">
 						<li class="menu-item">
-						  <a href="/index" rel="section">
+						  <a href="/" rel="section">
 						  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							首页
 						  </a>
@@ -56,13 +56,13 @@
 						  </a>
 						</li>
 						<li class="menu-item" >
-						  <a href="/categories" rel="section">
+						  <a href="/category" rel="section">
 						  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 							分类
 						  </a>
 						</li>
 						<li class="menu-item" >
-						  <a href="/archives" rel="section">
+						  <a href="/archive" rel="section">
 						  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
 							归档
 						  </a>
@@ -72,38 +72,13 @@
 			</div>
 			<!--<div class="" style="height:250px;background-color: #bbb;"></div>-->
 			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
-				<div class="header-inner">
-					<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
-					<p class="site-author-name" th:text="${dicts.name}"></p>
-					<p class="site-description" th:text="${dicts.description}"></p>
-				</div>
+				<div th:replace="common :: #header-inner"></div>
 				<hr/>
-				<div class="site-state">
-					<div class="col-xs-4 site-state-item header-inner">
-					  <a href="/archives">
-						<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
-						<span class="site-state-item-name">日志</span>
-					  </a>
-					</div>
-					<div class="col-xs-4 site-state-item header-inner">
-					  <a href="/tags/detail.html">
-						<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
-						<span class="site-state-item-name">分类</span>
-					  </a>
-					</div>
-					<div class="col-xs-4 site-state-item header-inner">
-					  <a href="/tags/detail.html">
-						<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
-						<span class="site-state-item-name">标签</span>
-					  </a>
-					</div>
-				</div>
-				<div class="header-inner post-title a-label-color">
-					<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
-				</div>
+				<div th:replace="common :: #site-state"></div>
+				<div th:replace="common :: #github"></div>
 			</div>
 		</div>
-		<div class="col-md-9 padding10" style="background-color: #fff;">
+		<div class="col-md-9 col-xs-12 padding10" style="background-color: #fff;">
 			<div class="about-title col-xs-12">
 				<h2>关于我</h2>
 				<hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/><hr/>
@@ -118,7 +93,7 @@
 		</a>
 	</span>
 	<!-- 导入公共footer -->
-	<div th:replace="footer :: #common-footer"></div>
+	<div th:replace="common :: #common-footer"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js//jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

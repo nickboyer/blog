@@ -1,11 +1,11 @@
 /*
- * Copyright 2015 nickboyer.cn All rights reserved
+ * Copyright 2014 Buyforyou.cn All rights reserved
  * 
  * @author Kang.Y
  * 
  * @mail
  * 
- * @createtime 2018年1月3日 上午11:58:31
+ * @createtime 2018年1月7日 下午3:39:35
  */
 package cn.nickboyer.blog.entry;
 
@@ -16,10 +16,9 @@ import java.util.List;
 /**
  * @title
  * @description
- * @author Kang.Y
  * @since JDK1.8
  */
-public class Tags implements Serializable {
+public class Categories implements Serializable {
 
 	/**
 	 * 
@@ -30,15 +29,27 @@ public class Tags implements Serializable {
 
 	private String name;
 
-	private String color;
-
-	private String size;
-
 	private Date createTime;
 
 	private Date updateTime;
 
 	private List<Archives> archives;
+
+	private Integer blogCount;
+
+	/**
+	 * @return blogCount
+	 */
+	public Integer getBlogCount() {
+		return blogCount;
+	}
+
+	/**
+	 * @param blogCount 要设置的 blogCount
+	 */
+	public void setBlogCount(Integer blogCount) {
+		this.blogCount = blogCount;
+	}
 
 	/**
 	 * @return archives
@@ -62,7 +73,7 @@ public class Tags implements Serializable {
 	}
 
 	/**
-	 * @param id to set id
+	 * @param id 要设置的 id
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -76,38 +87,10 @@ public class Tags implements Serializable {
 	}
 
 	/**
-	 * @param name to set name
+	 * @param name 要设置的 name
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return color
-	 */
-	public String getColor() {
-		return color;
-	}
-
-	/**
-	 * @param color to set color
-	 */
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	/**
-	 * @return size
-	 */
-	public String getSize() {
-		return size;
-	}
-
-	/**
-	 * @param size to set size
-	 */
-	public void setSize(String size) {
-		this.size = size;
 	}
 
 	/**
@@ -118,7 +101,7 @@ public class Tags implements Serializable {
 	}
 
 	/**
-	 * @param createTime to set createTime
+	 * @param createTime 要设置的 createTime
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
@@ -132,7 +115,7 @@ public class Tags implements Serializable {
 	}
 
 	/**
-	 * @param updateTime to set updateTime
+	 * @param updateTime 要设置的 updateTime
 	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;

@@ -94,4 +94,23 @@ public interface BlogsMapper {
 	@Update("update blogs set watch = watch + 1 where id = #{id}")
 	void updateWatch(String id);
 
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午9:17:57
+	 */
+	@Select("select id,header,create_time,update_time from blogs order by id desc")
+	List<Blogs> selectArchives();
+
+	/**
+	 * @param id
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月7日 下午4:17:39
+	 */
+	@Select("select id,header,create_time,update_time from blogs where category_id = #{id} order by id desc")
+	List<Blogs> selectListByCategoryId(String id);
+
 }

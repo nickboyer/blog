@@ -12,7 +12,9 @@ package cn.nickboyer.blog.server.service;
 import java.util.List;
 
 import cn.nickboyer.blog.common.Page;
+import cn.nickboyer.blog.entry.Archives;
 import cn.nickboyer.blog.entry.Blogs;
+import cn.nickboyer.blog.entry.Categories;
 import cn.nickboyer.blog.entry.Tags;
 
 /**
@@ -61,12 +63,28 @@ public interface IBlogsService {
 	Tags findTag(String id);
 
 	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月5日 下午9:15:41
+	 */
+	List<Archives> findArchives();
+
+	/**
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月7日 下午4:09:13
+	 */
+	List<Categories> findCategories();
+
+	/**
 	 * @param id
 	 * @return
 	 *
 	 * @authz Kang.Y
-	 * @createtime 2018年1月4日 下午4:58:23
+	 * @createtime 2018年1月7日 下午4:13:37
 	 */
-	List<Blogs> findBlogsByTagId(String id);
+	Categories findCategory(String id);
 
 }

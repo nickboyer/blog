@@ -25,50 +25,51 @@
 	<div class="headband"></div>
 	<div class="container padding0">
 		<div class="col-md-3 padding10">
-			<div class="header-inner">
-				<div class="site-brand" style="height:112px;background-color: #222;">
-					<div class="site-meta">
-						<a>
-							<span class="site-title" th:text="${dicts.websiteName}"></span>
-						</a>
-						<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+				<div class="header-inner">
+					<div class="site-brand" style="height:112px;background-color: #222;">
+						<div class="site-meta">
+							<a>
+								<span class="site-title" th:text="${dicts.websiteName}"></span>
+							</a>
+							<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+						</div>
+						<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
 					</div>
-					<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+					<div id="site-nav-toggle-list" class="site-nav-toggle-list">
+						<ul class="menu">
+							<li class="menu-item">
+							  <a href="/" rel="section">
+							  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+								首页
+							  </a>
+							</li>
+							<li class="menu-item" >
+							  <a href="/about" rel="section">
+							  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								关于
+							  </a>
+							</li>
+							<li class="menu-item" >
+							  <a href="/tag" rel="section">
+							  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+								标签
+							  </a>
+							</li>
+							<li class="menu-item" >
+							  <a href="/category" rel="section">
+							  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+								分类
+							  </a>
+							</li>
+							<li class="menu-item" >
+							  <a href="/archive" rel="section">
+							  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+								归档
+							  </a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div id="site-nav-toggle-list" class="site-nav-toggle-list">
-					<ul class="menu">
-						<li class="menu-item">
-						  <a href="/index" rel="section">
-						  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-							首页
-						  </a>
-						</li>
-						<li class="menu-item" >
-						  <a href="about.html" rel="section">
-						  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-						  关于</a>
-						</li>
-						<li class="menu-item" >
-						  <a href="/tag" rel="section">
-						  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-							标签
-						  </a>
-						</li>
-						<li class="menu-item" >
-						  <a href="/categories" rel="section">
-						  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-							分类
-						  </a>
-						</li>
-						<li class="menu-item" >
-						  <a href="/archives" rel="section">
-						  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-							归档
-						  </a>
-						</li>
-					</ul>
-				</div>
-			</div>
 			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
 				<div class="sidebar-nav col-xs-12">
 					<div class="col-xs-6 sidebar-nav-toc">
@@ -86,35 +87,10 @@
 						</ul>
 					</div>
 					<div class="site-pane site-overview">
-						<div class="header-inner">
-							<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
-							<p class="site-author-name" th:text="${dicts.name}"></p>
-							<p class="site-description" th:text="${dicts.description}"></p>
-						</div>
+						<div th:replace="common :: #header-inner"></div>
 						<hr/>
-						<div class="site-state">
-							<div class="col-xs-4 site-state-item header-inner">
-							  <a href="/archives">
-								<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
-								<span class="site-state-item-name">日志</span>
-							  </a>
-							</div>
-							<div class="col-xs-4 site-state-item header-inner">
-							  <a href="/tags/detail.html">
-								<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
-								<span class="site-state-item-name">分类</span>
-							  </a>
-							</div>
-							<div class="col-xs-4 site-state-item header-inner">
-							  <a href="/tags/detail.html">
-								<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
-								<span class="site-state-item-name">标签</span>
-							  </a>
-							</div>
-						</div>
-						<div class="header-inner post-title a-label-color">
-							<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
-						</div>
+						<div th:replace="common :: #site-state"></div>
+						<div th:replace="common :: #github"></div>
 					</div>
 					
 				</div>
@@ -128,7 +104,7 @@
 				<div class="post-title post-blog-label a-label-color">
 					<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text" th:text="'发表于 ' + ${#dates.format(blog.updateTime, 'yyyy-MM-dd')}"></span>
 					<span class="post-blog-text">|</span>
-					<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a th:text="${blog.categoryName}">技术文档</a>
+					<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a th:href="@{'/category?id='+${blog.categoryId}}" th:text="${blog.categoryName}">技术文档</a>
 					<span class="post-blog-text">|</span>
 					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="post-blog-text" th:text="'阅读数 '+${blog.watch}"></span>
 				</div>
@@ -161,7 +137,7 @@
 		</a>
 	</span>
 	<!-- 导入公共footer -->
-	<div th:replace="footer :: #common-footer"></div>
+	<div th:replace="common :: #common-footer"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

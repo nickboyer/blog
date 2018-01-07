@@ -1,0 +1,34 @@
+<footer class="bs-docs-footer" id="common-footer">
+	<div class="container text-center copyright">
+		<p>Copyright © 2013-2017 <a href="http://www.miitbeian.gov.cn/">京ICP备18000361号</a></p>
+	</div>
+</footer>
+<div class="header-inner" id="header-inner">
+	<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
+	<p class="site-author-name" th:text="${dicts.name}"></p>
+	<p class="site-description" th:text="${dicts.description}"></p>
+</div>
+<hr/>
+<div class="site-state" id="site-state">
+	<div class="col-xs-4 site-state-item header-inner">
+	  <a href="/archive">
+		<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
+		<span class="site-state-item-name">日志</span>
+	  </a>
+	</div>
+	<div class="col-xs-4 site-state-item header-inner">
+	  <a href="/category">
+		<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
+		<span class="site-state-item-name">分类</span>
+	  </a>
+	</div>
+	<div class="col-xs-4 site-state-item header-inner">
+	  <a href="/tag">
+		<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
+		<span class="site-state-item-name">标签</span>
+	  </a>
+	</div>
+</div>
+<div class="header-inner post-title a-label-color" id="github">
+	<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
+</div>

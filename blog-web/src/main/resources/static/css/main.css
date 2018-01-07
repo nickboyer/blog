@@ -81,13 +81,17 @@ a {
 .site-state-item {
     display: inline-block;
     padding: 0 15px;
+}
+.site-state-item-center {
     border-left: 1px solid #e2e1e1;
+    border-right: 1px solid #e2e1e1;
 }
 .site-state-item a{
 	color: #3e3e3e;
 }
 .a-label-color a{
 	color: #3e3e3e;
+	font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
 }
 .a-label-color-white a{
 	color: #fff;
@@ -509,12 +513,12 @@ div.sidebar-nav-active {
 /*归档*/
 @media (max-width: 992px) {
 	.archives-content {
-		padding: 40px 5px 40px 0px;
+		padding: 10px 5px 40px 0px;
 	}
 }
 @media (min-width: 992px) {
 	.archives-content {
-		padding: 40px 5px 40px 40px;
+		padding: 10px 5px 40px 40px;
 	}
 }
 .nickboyer-timeline-content ul {
@@ -524,7 +528,7 @@ div.sidebar-nav-active {
     content: "";
     position: absolute;
     left: 45px;
-    top: 0;
+    top: 10px;
     width: 2px;
     height: 100%;
 	background:#e6e6e6;
@@ -558,7 +562,7 @@ div.sidebar-nav-active {
 h3.nickboyer-timeline-title{
 	margin: 0 0 10px 0;
     font-size: 18px;
-	font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+	    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
 }
 .nickboyer-timeline-content li a {
 	color: #999;
@@ -595,4 +599,33 @@ h3.nickboyer-timeline-title{
 /* about */
 .about-title h2{
 	text-align:center;
+}
+/* 分类 */
+/* 标签 */
+.category-title h5{
+	text-align: center;
+	padding: 50px 0 20px 0;
+}
+.category-title h3 {
+	text-align: center;
+	padding: 50px 0 20px 0;
+	font-weight:bold;
+	font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.undertone {
+	padding: 0 5px;
+	color:#bbb;
+}
+.category-content a{
+	color: #555;
+	border-bottom: 1px solid #555;
+	font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.category-content span{
+	color: #c3c3c3;
+	font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.category-content li{
+	margin: 10px 0;	
+	list-style: none;
 }

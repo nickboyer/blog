@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.nickboyer.blog.common.Page;
+import cn.nickboyer.blog.entry.Archives;
 import cn.nickboyer.blog.entry.Blogs;
+import cn.nickboyer.blog.entry.Categories;
 import cn.nickboyer.blog.entry.Tags;
 import cn.nickboyer.blog.web.cloud.IBlogsService;
 import cn.nickboyer.blog.web.cloud.IRedisService;
@@ -93,16 +95,14 @@ public class BlogController extends BaseComponent {
 
 		String id = req.getParameter("id");
 		if (StringUtils.isEmpty(id)) {
-			// 跳转首页
+			// 跳转标签首页
 			List<Tags> tags = blogsService.findTags();
 			mv.addObject("tags", tags);
 			mv.setViewName("tags");
 		} else {
 			// 获取详情数据
 			Tags tag = blogsService.findTag(id);
-			List<Blogs> blogs = blogsService.findBlogsByTagId(id);
 			mv.addObject("tag", tag);
-			mv.addObject("blogs", blogs);
 			mv.setViewName("tags_single");
 		}
 
@@ -111,4 +111,38 @@ public class BlogController extends BaseComponent {
 		mv.addObject("dicts", dicts);
 		return mv;
 	}
+
+	@RequestMapping("/archive")
+	public ModelAndView archive(ModelAndView mv) {
+
+		List<Archives> archives = blogsService.findArchives();
+		mv.addObject("archives", archives);
+		// 获取字典数据
+		Map<String, String> dicts = redisService.findAllDicts();
+		mv.addObject("dicts", dicts);
+		mv.setViewName("archives");
+		return mv;
+	}
+
+	@RequestMapping("/category")
+	public ModelAndView category(ModelAndView mv, HttpServletRequest req) {
+
+		String id = req.getParameter("id");
+		if (StringUtils.isEmpty(id)) {
+			// 跳转分类首页
+			List<Categories> categories = blogsService.findCategories();
+			mv.addObject("categories", categories);
+			mv.setViewName("categories");
+		} else {
+			// 获取详情数据
+			Categories category = blogsService.findCategory(id);
+			mv.addObject("category", category);
+			mv.setViewName("categories_single");
+		}
+		// 获取字典数据
+		Map<String, String> dicts = redisService.findAllDicts();
+		mv.addObject("dicts", dicts);
+		return mv;
+	}
+
 }

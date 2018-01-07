@@ -9,20 +9,26 @@
  */
 package cn.nickboyer.blog.server.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 
 import cn.nickboyer.blog.common.Page;
+import cn.nickboyer.blog.entry.Archives;
 import cn.nickboyer.blog.entry.Blogs;
+import cn.nickboyer.blog.entry.Categories;
 import cn.nickboyer.blog.entry.Tags;
 import cn.nickboyer.blog.server.mapper.BlogsMapper;
+import cn.nickboyer.blog.server.mapper.CategoriesMapper;
 import cn.nickboyer.blog.server.mapper.TagsMapper;
 import cn.nickboyer.blog.server.service.BaseService;
 import cn.nickboyer.blog.server.service.IBlogsService;
+import cn.nickboyer.blog.util.DateUtil;
 
 /**
  * @title
@@ -37,6 +43,8 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
 	private BlogsMapper blogsMapper;
 	@Autowired
 	private TagsMapper tagsMapper;
+	@Autowired
+	private CategoriesMapper categoriesMapper;
 
 	/**
 	 * （no Javadoc）
@@ -90,17 +98,71 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
 	 */
 	@Override
 	public Tags findTag(String id) {
-		return tagsMapper.selectById(id);
+		Tags tag = tagsMapper.selectById(id);
+		tag.setArchives(getArchives(tagsMapper.selectBlogsByTagId(id)));
+		return tag;
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.blog.server.service.IBlogsService#findArchives()
+	 */
+	@Override
+	public List<Archives> findArchives() {
+		return getArchives(blogsMapper.selectArchives());
+
 	}
 
 	/**
-	 * （no Javadoc）
+	 * @param blogs
+	 * @return
+	 *
+	 * @authz Kang.Y
+	 * @createtime 2018年1月7日 下午5:08:23
+	 */
+	private List<Archives> getArchives(List<Blogs> blogs) {
+		List<Archives> list = new ArrayList<>();
+		Archives archives = null;
+		List<Blogs> sames = null;
+		String time = null;
+		for (Blogs blog : blogs) {
+			String createTime = DateUtil.toYYYY_MM(blog.getCreateTime());
+			if (!createTime.equals(time)) {
+				if (StringUtils.isNotEmpty(time)) {
+					list.add(archives);
+				}
+				time = createTime;
+				sames = new ArrayList<>();
+				archives = new Archives(time, sames);
+			}
+			sames.add(blog);
+		}
+		list.add(archives);
+		return list;
+	}
+
+	/*
+	 * （非 Javadoc）
 	 * 
-	 * @see cn.nickboyer.blog.server.service.IBlogsService#findBlogsByTagId(java.lang.String)
+	 * @see cn.nickboyer.blog.server.service.IBlogsService#findCategories()
 	 */
 	@Override
-	public List<Blogs> findBlogsByTagId(String id) {
-		return tagsMapper.selectBlogsByTagId(id);
+	public List<Categories> findCategories() {
+		return categoriesMapper.selectAll();
+	}
+
+	/*
+	 * （非 Javadoc）
+	 * 
+	 * @see cn.nickboyer.blog.server.service.IBlogsService#findCategory(java.lang.String)
+	 */
+	@Override
+	public Categories findCategory(String id) {
+		Categories category = categoriesMapper.selectById(id);
+		List<Blogs> blogs = blogsMapper.selectListByCategoryId(id);
+		category.setArchives(getArchives(blogs));
+		return category;
 	}
 
 }

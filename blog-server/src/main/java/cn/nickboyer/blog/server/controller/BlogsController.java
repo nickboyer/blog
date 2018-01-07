@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.nickboyer.blog.common.Page;
+import cn.nickboyer.blog.entry.Archives;
 import cn.nickboyer.blog.entry.Blogs;
+import cn.nickboyer.blog.entry.Categories;
 import cn.nickboyer.blog.entry.Tags;
 import cn.nickboyer.blog.server.service.IBlogsService;
 
@@ -52,8 +54,18 @@ public class BlogsController {
 		return blogService.findTag(id);
 	}
 
-	@RequestMapping("/tag_blogs")
-	List<Blogs> findBlogsByTagId(String id) {
-		return blogService.findBlogsByTagId(id);
+	@RequestMapping("/archive")
+	List<Archives> findArchives() {
+		return blogService.findArchives();
+	}
+
+	@RequestMapping("/category")
+	List<Categories> findCategories() {
+		return blogService.findCategories();
+	}
+
+	@RequestMapping("/category_single")
+	Categories findCategory(String id) {
+		return blogService.findCategory(id);
 	}
 }

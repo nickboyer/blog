@@ -164,6 +164,8 @@ a {
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
+  font-size: 26px;
+  font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif
 }
 .post-title-link::before {
   content: "";

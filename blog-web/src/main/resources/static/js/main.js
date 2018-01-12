@@ -17,9 +17,25 @@ $(function(){
 		$(".sidebar-content div."+$(this).attr("data-target")).addClass("sidebar-nav-active");
 	});
 
-
 	backToTop();
 	
+	$("#nickboyer-search").bind('input porpertychange',function(){
+		var wd = $(this).val();
+		$.ajax({
+			type: "GET",
+			url: "/search",
+			data: {wd:wd},
+			dataType: "json",
+			success: function(data){
+				console.log(data);
+				var html = '';
+				$.each(data, function(index, comment){
+					html = html + '<li class="col-xs-12"><a href="/detail?id='+comment.id+'" class="col-xs-12">'+comment.header+'</a></li>';
+				});
+				$("#search-result").html(html);
+			}	
+		});
+	});
 });
 
 /*back to top*/

@@ -24,6 +24,7 @@
  <body data-spy="scroll" data-target="#navbar-example">
 	<div class="headband"></div>
 	<div class="container padding0">
+		<div th:replace="common :: #common-search"></div>
 		<div class="col-md-3 padding10">
 				<div class="header-inner">
 					<div class="site-brand" style="height:112px;background-color: #222;">
@@ -67,10 +68,16 @@
 								归档
 							  </a>
 							</li>
+							<li class="menu-item" >
+							  <a rel="section" data-toggle="modal" data-target="#common-search">
+							  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								搜索
+							  </a>
+							</li>
 						</ul>
 					</div>
 				</div>
-			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="360">
+			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="405">
 				<div class="sidebar-nav col-xs-12">
 					<div class="col-xs-6 sidebar-nav-toc">
 						<li class="sidebar-nav-active" data-target="site-toc">文章目录</li>

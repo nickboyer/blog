@@ -265,7 +265,7 @@ a {
 
 /* 固定图片、目录 */
 .affix.suspend{
-    margin-top:-360px;
+    margin-top:-405px;
 	width: 222.5px;
 }
 
@@ -631,3 +631,45 @@ h3.nickboyer-timeline-title{
 	margin: 10px 0;	
 	list-style: none;
 }
+
+/* 站内搜索 */
+.search-header{
+	padding:5px;
+}
+.search-header input {
+    outline: 0;
+    border: none;
+	width: 100%;
+}
+.search-input{
+	padding:0px;
+}
+.button-search{
+	background:0;
+	border: none;
+	outline: 0;
+}
+.search-icon{
+	padding: 3px 5px 0 5px;
+}
+.search-close{
+	padding: 3px 5px 0 5px;
+}
+.search-content li{
+	list-style:none;
+	padding:0;
+}
+
+.search-content a {
+	color:#999;
+	padding: 5px 0;
+	border-bottom: 1px dashed #999;
+}
+.search-content a:hover {
+	color:#555;
+	padding: 5px 0;
+	border-bottom: 1px dashed #555;
+}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background-color:#ffffff;}
+::-webkit-scrollbar-thumb{background-color:#b5b5b5;}

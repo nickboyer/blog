@@ -68,4 +68,5 @@ public class BlogsController {
 	Categories findCategory(String id) {
 		return blogService.findCategory(id);
 	}
+
 }

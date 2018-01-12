@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.nickboyer.blog.common.Page;
@@ -27,6 +28,7 @@ import cn.nickboyer.blog.entry.Categories;
 import cn.nickboyer.blog.entry.Tags;
 import cn.nickboyer.blog.web.cloud.IBlogsService;
 import cn.nickboyer.blog.web.cloud.IRedisService;
+import cn.nickboyer.blog.web.cloud.ISolrService;
 
 /**
  * @title
@@ -41,6 +43,8 @@ public class BlogController extends BaseComponent {
 	private IBlogsService blogsService;
 	@Autowired
 	private IRedisService redisService;
+	@Autowired
+	private ISolrService solrService;
 
 	/**
 	 * 首页
@@ -145,4 +149,15 @@ public class BlogController extends BaseComponent {
 		return mv;
 	}
 
+	@RequestMapping("/search")
+	@ResponseBody
+	public Object search(HttpServletRequest req) {
+		String wd = req.getParameter("wd");
+		if (StringUtils.isEmpty(wd)) {
+			return null;
+		} else {
+			List<Blogs> blogs = solrService.search(wd);
+			return blogs;
+		}
+	}
 }

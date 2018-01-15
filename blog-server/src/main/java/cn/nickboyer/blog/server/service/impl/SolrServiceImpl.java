@@ -18,9 +18,9 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.stereotype.Service;
 
+import cn.nickboyer.blog.common.Const;
 import cn.nickboyer.blog.entry.Blogs;
 import cn.nickboyer.blog.server.service.ISolrService;
 
@@ -34,7 +34,7 @@ import cn.nickboyer.blog.server.service.ISolrService;
 public class SolrServiceImpl implements ISolrService {
 
 	@Autowired
-	private SolrTemplate solrTemplate;
+	private SolrClient solrClient;
 
 	/**
 	 * （no Javadoc）
@@ -43,7 +43,6 @@ public class SolrServiceImpl implements ISolrService {
 	 */
 	@Override
 	public List<Blogs> search(String wd) {
-		SolrClient solr = solrTemplate.getSolrClient();
 		SolrQuery query = new SolrQuery();
 		query.set("q", "header:" + wd);
 		query.setHighlight(true);
@@ -52,7 +51,7 @@ public class SolrServiceImpl implements ISolrService {
 		query.setHighlightSimplePost("</font>");
 		QueryResponse response = null;
 		try {
-			response = solr.query(query);
+			response = solrClient.query(Const.SOLR_COLLECTION_NICKBOYER, query);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

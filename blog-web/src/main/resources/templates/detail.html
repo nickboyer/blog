@@ -24,6 +24,11 @@
  <body data-spy="scroll" data-target="#navbar-example">
 	<div class="headband"></div>
 	<div class="container padding0">
+		<div class="modal fade col-xs-12" id="viever-img" style="display: none;">
+			<div class="modal-dialog" style="background:0;width:90%;text-align:center;">
+				<img style="max-width:100%"/>
+			</div>
+		</div>
 		<div th:replace="common :: #common-search"></div>
 		<div class="col-md-3 padding10">
 				<div class="header-inner">
@@ -160,6 +165,12 @@
 	    $(function(){
 	    	var text = [[${blog.contentStr}]];
 			nickboyer.markdownToHtml("doc-toc","doc-content",text);
+			
+			/* 图片查看事件 */
+			$(".markdown-body img").click(function(){
+				$("#viever-img img").attr("src",$(this).attr("src"));
+				$('#viever-img').modal();
+			});
 		});
    		/*]]>*/
 	</script>

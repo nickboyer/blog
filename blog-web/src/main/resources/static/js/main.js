@@ -19,6 +19,7 @@ $(function(){
 
 	backToTop();
 	
+	/* 搜索绑定事件 */
 	$("#nickboyer-search").bind('input porpertychange',function(){
 		var wd = $(this).val();
 		$.ajax({
@@ -36,6 +37,12 @@ $(function(){
 			}	
 		});
 	});
+	
+	/* 搜索弹出聚焦 */
+	$("#common-search").on('shown.bs.modal', function () {
+		  $('#nickboyer-search').focus();
+	})
+	
 });
 
 /*back to top*/

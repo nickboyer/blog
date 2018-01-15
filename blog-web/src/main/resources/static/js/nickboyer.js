@@ -432,6 +432,4 @@ nickboyer.markedRenderer = function(markdownToC, options) {
 	
 	return markedRenderer;
 };
-
-
 });

@@ -20,4 +20,5 @@ public class Const {
 	/** 存入session中的验证码code */
 	public static final String VERIFY_CODE = "verifyCode";
 	public static final String REDIS_DICTS = "nickboyer:dict";
+	public static final String SOLR_COLLECTION_NICKBOYER = "nickboyer";
 }

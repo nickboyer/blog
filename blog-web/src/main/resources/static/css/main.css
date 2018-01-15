@@ -670,6 +670,10 @@ h3.nickboyer-timeline-title{
 	padding: 5px 0;
 	border-bottom: 1px dashed #555;
 }
+/* 图片 */
+#viever-img,.markdown-body img {
+	cursor: pointer;
+}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background-color:#ffffff;}
 ::-webkit-scrollbar-thumb{background-color:#b5b5b5;}

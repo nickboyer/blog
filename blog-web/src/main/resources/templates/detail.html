@@ -24,7 +24,7 @@
  <body data-spy="scroll" data-target="#navbar-example">
 	<div class="headband"></div>
 	<div class="container padding0">
-		<div class="modal fade col-xs-12" id="viever-img" style="display: none;">
+		<div class="modal fade col-xs-12" id="viever-img"  style="display: none;">
 			<div class="modal-dialog" style="background:0;width:90%;text-align:center;">
 				<img style="max-width:100%"/>
 			</div>
@@ -166,11 +166,25 @@
 	    	var text = [[${blog.contentStr}]];
 			nickboyer.markdownToHtml("doc-toc","doc-content",text);
 			
+			$('#viever-img').on('shown.bs.modal', function (e) {  
+	            // 关键代码，如没将modal设置为 block，则$modala_dialog.height() 为零  
+	            $(this).css('display', 'block');  
+	            var modalHeight=$(window).height() / 2 - $('#viever-img .modal-dialog').height() / 2;  
+	            $(this).find('.modal-dialog').css({  
+	                'margin-top': modalHeight  
+	            });  
+	        }); 
+			
 			/* 图片查看事件 */
 			$(".markdown-body img").click(function(){
 				$("#viever-img img").attr("src",$(this).attr("src"));
 				$('#viever-img').modal();
+				$('#viever-img').click(function(){
+					$('#viever-img').modal('hide');
+				});
+				
 			});
+			
 		});
    		/*]]>*/
 	</script>

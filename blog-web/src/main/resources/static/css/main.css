@@ -332,6 +332,9 @@ pre {
 	color: #3e3e3e;
 	border:0px;
 }
+a:focus{
+	box-shadow:none !important;
+}
 .pagination .active a{ 
 	background: #555;
 	color: #fff;
@@ -376,7 +379,7 @@ pre {
 	text-align: right;
 }
 .comments {
-	margin: 60px 10px 0;
+	margin: 60px 0 0;
 }
 /* 文章底部的标签*/
 .post-tags {
@@ -690,6 +693,9 @@ h3.nickboyer-timeline-title{
 	right:15px;
 	bottom:15px;
 	display: none;
+}
+.post-title a{
+	color:#555;	
 }
 
 

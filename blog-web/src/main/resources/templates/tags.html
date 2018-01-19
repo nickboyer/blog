@@ -9,9 +9,10 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>标签 | nickboyer</title>
     <!-- Bootstrap -->
+    <link href="css/editormd.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="css/main.css" rel="stylesheet"/>
-	<link href="css/editormd.min.css" rel="stylesheet"/>
+	<link href="css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="css/main.min.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,91 +23,90 @@
   </head>
   <body>
 	<div class="headband"></div>
-	<div class="container padding0">
-		<div th:replace="common :: #common-search"></div>
-		<div class="col-md-3 padding10">
-				<div class="header-inner">
-					<div class="site-brand" style="height:112px;background-color: #222;">
-						<div class="site-meta">
-							<a>
-								<span class="site-title" th:text="${dicts.websiteName}"></span>
-							</a>
-							<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+	<div class="container">
+		<div class="row">
+			<div th:replace="common :: #common-search"></div>
+			<div class="col-lg-3 padding-media paddinglr10">
+					<div class="header-inner">
+						<div class="site-brand" style="height:112px;background-color: #222;">
+							<div class="site-meta">
+								<a>
+									<span class="site-title" th:text="${dicts.websiteName}">nickboyer's notes</span>
+								</a>
+								<p class="site-subtitle" th:text="${dicts.websiteAbout}">骑驴三十载，不知火烧是何味！</p>
+							</div>
+							<a id="site-nav-toggle" class="site-nav-toggle"><i class="fa fa-navicon" aria-hidden="true"></i></a>
 						</div>
-						<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+						<div id="site-nav-toggle-list" class="hidden-media">
+							<ul class="menu">
+								<li class="menu-item" >
+								  <a href="index.html" rel="section">
+								  <i class="fa fa-home fa-size" aria-hidden="true"></i>
+									首页
+								  </a>
+								</li>
+								<li class="menu-item" >
+								  <a href="about.html" rel="section">
+								  <i class="fa fa-user fa-size" aria-hidden="true"></i>
+									关于
+								  </a>
+								</li>
+								<li class="menu-item menu-item-active" >
+								  <a href="/tag" rel="section">
+								  <i class="fa fa-tag fa-size" aria-hidden="true"></i>
+									标签
+									<span class="point"/>
+								  </a>
+								</li>
+								<li class="menu-item" >
+								  <a href="/category" rel="section">
+								  <i class="fa fa-tasks fa-size" aria-hidden="true"></i>
+									分类
+								  </a>
+								</li>
+								<li class="menu-item" >
+								  <a href="/archive" rel="section">
+								  <i class="fa fa-suitcase fa-size" aria-hidden="true"></i>
+									归档
+								  </a>
+								</li>
+								<li class="menu-item" >
+								  <a rel="section" data-toggle="modal" data-target="#common-search">
+								 <i class="fa fa-search fa-size" aria-hidden="true"></i>
+									搜索
+								  </a>
+								</li>
+							</ul>
+						</div>
 					</div>
-					<div id="site-nav-toggle-list" class="site-nav-toggle-list">
-						<ul class="menu">
-							<li class="menu-item">
-							  <a href="/" rel="section">
-							  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-								首页
-							  </a>
-							</li>
-							<li class="menu-item" >
-							  <a href="/about" rel="section">
-							  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-								关于
-							  </a>
-							</li>
-							<li class="menu-item menu-item-active" >
-							  <a href="/tag" rel="section">
-							  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
-								标签
-								<span class="point"/>
-							  </a>
-							</li>
-							<li class="menu-item" >
-							  <a href="/category" rel="section">
-							  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-								分类
-							  </a>
-							</li>
-							<li class="menu-item" >
-							  <a href="/archive" rel="section">
-							  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-								归档
-							  </a>
-							</li>
-							<li class="menu-item" >
-							  <a rel="section" data-toggle="modal" data-target="#common-search">
-							  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								搜索
-							  </a>
-							</li>
-						</ul>
-					</div>
+				<div class="header-inner paddingtb20 suspend sps sps--abv hidden-media" data-sps-offset="405">
+					<div th:replace="common :: #header-inner"></div>
+					<hr/>
+					<div th:replace="common :: #site-state"></div>
+					<div th:replace="common :: #github"></div>
 				</div>
-			<!--<div class="" style="height:250px;background-color: #bbb;"></div>-->
-			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="405">
-				<div th:replace="common :: #header-inner"></div>
-				<hr/>
-				<div th:replace="common :: #site-state"></div>
-				<div th:replace="common :: #github"></div>
 			</div>
-		</div>
-		<div class="col-md-9 col-xs-12 padding10" style="background-color: #fff;">
-			<div class="tags-title col-xs-12">
-				<h5 th:text="'目前一共'+${#lists.size(tags)}+'个标签'"></h5>
-			</div>
-			<div class="tags-content col-xs-12">
-				<a th:each="tag,stat:${tags}" th:href="@{'/tag?id='+${tag.id}}" th:text="${tag.name}" th:style="'font-size:'+${tag.size}+'px; color:rgb('+${tag.color}+','+${tag.color}+','+${tag.color}+');'"></a>
+			<div class="col-lg-9 padding-media" style="background-color: #fff;">
+				<div class="tags-title col-12">
+					<h5 th:text="'目前一共'+${#lists.size(tags)}+'个标签'">目前一个5个标签</h5>
+				</div>
+				<div class="tags-content col-12">
+					<a th:each="tag,stat:${tags}" th:href="@{'/tag?id='+${tag.id}}" th:text="${tag.name}" th:style="'font-size:'+${tag.size}+'px; color:rgb('+${tag.color}+','+${tag.color}+','+${tag.color}+');'">linux</a>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<!--back-to-top-->
-	<span id="top-link-block" class="hidden a-label-color-white">
-		<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-			<i class="glyphicon glyphicon-chevron-up"></i><span>100</span>%
-		</a>
-	</span>
+	<div th:replace="common :: #top-link-block"></div>
 	<!-- 导入公共footer -->
 	<div th:replace="common :: #common-footer"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/scrollPosStyler.min.js"></script>
+	<script src="js/main.min.js"></script>
+	<script src="js/canvas-nest.min.js"></script>
   </body>
 </html>

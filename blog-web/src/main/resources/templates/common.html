@@ -4,33 +4,33 @@
 	</div>
 </footer>
 <div class="header-inner" id="header-inner">
-	<img class="img-responsive center-block paddinglr60" th:src="@{${dicts.imgUrl}}"/>
-	<p class="site-author-name" th:text="${dicts.name}"></p>
-	<p class="site-description" th:text="${dicts.description}"></p>
+	<img class="img-fluid paddinglr60" src="http://www.nickboyer.cn/static/8c5066ae3fc741b9a8da9cc603becd10.jpg" th:src="@{${dicts.imgUrl}}"/>
+	<p class="site-author-name" th:text="${dicts.name}">易</p>
+	<p class="site-description" th:text="${dicts.description}">骑驴三十载，不知火烧是何味！</p>
 </div>
 <hr/>
 <div class="site-state" id="site-state">
-	<div class="col-xs-4 site-state-item header-inner">
+	<div class="col-4 site-state-item header-inner">
 	  <a href="/archive">
-		<span class="site-state-item-count" th:text="${dicts.blogsCount}"></span>
+		<span class="site-state-item-count" th:text="${dicts.blogsCount}">12</span>
 		<span class="site-state-item-name">日志</span>
 	  </a>
 	</div>
-	<div class="col-xs-4 site-state-item header-inner">
+	<div class="col-4 site-state-item header-inner">
 	  <a href="/category">
-		<span class="site-state-item-count" th:text="${dicts.categorysCount}"></span>
+		<span class="site-state-item-count" th:text="${dicts.categorysCount}">12</span>
 		<span class="site-state-item-name">分类</span>
 	  </a>
 	</div>
-	<div class="col-xs-4 site-state-item header-inner">
+	<div class="col-4 site-state-item header-inner">
 	  <a href="/tag">
-		<span class="site-state-item-count" th:text="${dicts.tagsCount}"></span>
+		<span class="site-state-item-count" th:text="${dicts.tagsCount}">12</span>
 		<span class="site-state-item-name">标签</span>
 	  </a>
 	</div>
 </div>
-<div class="header-inner post-title a-label-color" id="github">
-	<a><span class="glyphicon glyphicon-star paddingtb20 site-state-item-count" aria-hidden="true">Github</span></a>
+<div class="header-inner post-title" style="color:#000;padding-top:20px;" id="github">
+	<a href="https://github.com"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
 </div>
 <div class="modal fade" id="common-search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document" style="background:#fff;">
@@ -55,3 +55,8 @@
 	</div>
   </div>
 </div>
+<span id="top-link-block" class="hidden a-label-color-white" style="background:#3e3e3e;">
+	<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+		<i class="fa fa-arrow-up" aria-hidden="true"></i><span>100</span>%
+	</a>
+</span>

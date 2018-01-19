@@ -11,7 +11,8 @@
     <!-- Bootstrap -->
 	<link href="css/editormd.min.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="css/main.css" rel="stylesheet"/>
+	<link href="css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="css/main.min.css" rel="stylesheet"/>
 	
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -21,82 +22,83 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></scr	ipt>
     <![endif]-->
   </head>
- <body data-spy="scroll" data-target="#navbar-example">
+ <body data-spy="scroll">
 	<div class="headband"></div>
-	<div class="container padding0">
-		<div class="modal fade col-xs-12" id="viever-img"  style="display: none;">
-			<div class="modal-dialog" style="background:0;width:90%;text-align:center;">
-				<img style="max-width:100%"/>
-			</div>
+	<div class="container">
+		<div class="row">
+		<div class="modal fade" id="viever-img" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:95%;">
+			<img class="img-fluid" style="max-width:100%;margin:auto;"/>
+		  </div>
 		</div>
 		<div th:replace="common :: #common-search"></div>
-		<div class="col-md-3 padding10">
+		<div class="col-lg-3 padding-media paddinglr10">
 				<div class="header-inner">
 					<div class="site-brand" style="height:112px;background-color: #222;">
 						<div class="site-meta">
 							<a>
-								<span class="site-title" th:text="${dicts.websiteName}"></span>
+								<span class="site-title" th:text="${dicts.websiteName}">nickboyer's notes</span>
 							</a>
-							<p class="site-subtitle" th:text="${dicts.websiteAbout}"></p>
+							<p class="site-subtitle" th:text="${dicts.websiteAbout}">骑驴三十载，不知火烧是何味！</p>
 						</div>
-						<a id="site-nav-toggle" class="site-nav-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
+						<a id="site-nav-toggle" class="site-nav-toggle"><i class="fa fa-navicon" aria-hidden="true"></i></a>
 					</div>
-					<div id="site-nav-toggle-list" class="site-nav-toggle-list">
+					<div id="site-nav-toggle-list" class="hidden-media">
 						<ul class="menu">
-							<li class="menu-item">
-							  <a href="/" rel="section">
-							  <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							<li class="menu-item" >
+							  <a href="index.html" rel="section">
+							  <i class="fa fa-home fa-size" aria-hidden="true"></i>
 								首页
 							  </a>
 							</li>
 							<li class="menu-item" >
-							  <a href="/about" rel="section">
-							  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							  <a href="about.html" rel="section">
+							  <i class="fa fa-user fa-size" aria-hidden="true"></i>
 								关于
 							  </a>
 							</li>
 							<li class="menu-item" >
 							  <a href="/tag" rel="section">
-							  <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+							  <i class="fa fa-tag fa-size" aria-hidden="true"></i>
 								标签
 							  </a>
 							</li>
 							<li class="menu-item" >
 							  <a href="/category" rel="section">
-							  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+							  <i class="fa fa-tasks fa-size" aria-hidden="true"></i>
 								分类
 							  </a>
 							</li>
 							<li class="menu-item" >
 							  <a href="/archive" rel="section">
-							  <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+							  <i class="fa fa-suitcase fa-size" aria-hidden="true"></i>
 								归档
 							  </a>
 							</li>
 							<li class="menu-item" >
 							  <a rel="section" data-toggle="modal" data-target="#common-search">
-							  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							 <i class="fa fa-search fa-size" aria-hidden="true"></i>
 								搜索
 							  </a>
 							</li>
 						</ul>
 					</div>
 				</div>
-			<div class="header-inner paddingtb20 hidden-xs hidden-sm suspend" data-spy="affix" data-offset-top="405">
-				<div class="sidebar-nav col-xs-12">
-					<div class="col-xs-6 sidebar-nav-toc">
+			<div class="header-inner paddingtb20 suspend sps sps--abv hidden-media" data-sps-offset="405">
+				<div class="sidebar-nav">
+					<div class="row">
+					<div class="col-6 sidebar-nav-toc">
 						<li class="sidebar-nav-active" data-target="site-toc">文章目录</li>
 					</div>
-					
-					<div class="col-xs-6 sidebar-nav-overview">
+					<div class="col-6 sidebar-nav-overview">
 						<li data-target="site-overview">站点概览</li>
 					</div>
-					
+					</div>
 				</div>
 				<div class="sidebar-content">
-					<div class="site-pane site-toc sidebar-nav-active" id="navbar-example">
-						<ul class="nav nav-tabs nav-stacked" id="doc-toc">
-						</ul>
+					<div class="navbar site-pane site-toc sidebar-nav-active" id="navbar-example">
+						<nav class="navbar-nav" id="doc-toc">
+						</nav>
 					</div>
 					<div class="site-pane site-overview">
 						<div th:replace="common :: #header-inner"></div>
@@ -104,12 +106,11 @@
 						<div th:replace="common :: #site-state"></div>
 						<div th:replace="common :: #github"></div>
 					</div>
-					
 				</div>
 			</div>
 		</div>
-		<div class="col-md-9 padding10" style="background-color: #fff;">
-			<div class="col-md-12">
+		<div class="col-lg-9 padding-media" style="background-color: #fff;">
+			<div class="col-lg-12">
 				<h2 class="post-title">
 					<a class="post-title-link" th:text="${blog.header}"></a>
 				</h2>
@@ -123,42 +124,40 @@
 				<div class=" markdown-body editormd-preview-container" id="doc-content">
 				</div>
 				<div class="post-tags">
-					<a th:each="tag,stat:${blog.tags}" th:href="@{'/tag?id='+${tag.id}}" rel="tag" th:text="'# '+${tag.name}"></a>
+					<a th:each="tag,stat:${blog.tags}" th:href="@{'/tag?id='+${tag.id}}" rel="tag" th:text="'# '+${tag.name}"># nginx</a>
 				</div>	
-				<div class="post-blog-pn col-md-12">
-				  <div class="post-blog-prev col-xs-6">
-					  <a th:if="${blog.prev != null}" th:href="@{'/detail?id='+${blog.prev.id}}" rel="prev" th:title="${blog.prev.header}">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span th:text="${blog.prev.header}"></span>
-					  </a>
-				  </div>
-				  <div class="post-blog-next col-xs-6">
-					  <a th:if="${blog.next != null}" th:href="@{'/detail?id='+${blog.next.id}}" rel="next" th:title="${blog.next.header}">
-						<span th:text="${blog.next.header}"></span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					  </a>
-				  </div>
+				<div class="post-blog-pn col-12">
+					<div class="row">
+						<div class="post-blog-prev col-6">
+						  <a th:if="${blog.prev != null}" th:href="@{'/detail?id='+${blog.prev.id}}" rel="prev" th:title="${blog.prev.header}">
+							<i class="fa fa-chevron-left post-blog-pn-icon" aria-hidden="true"></i><span th:text="${blog.prev.header}">linux安装</span>
+						  </a>
+						</div>
+						<div class="post-blog-next col-6">
+						  <a th:if="${blog.next != null}" th:href="@{'/detail?id='+${blog.next.id}}" rel="next" th:title="${blog.next.header}">
+							<span th:text="${blog.next.header}">nginx安装</span><i class="fa fa-chevron-right post-blog-pn-icon" aria-hidden="true"></i>
+						  </a>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="comments col-md-12"></div>
 		</div>
+		</div>
 	</div>
 
 	<!--back-to-top-->
-	<span id="top-link-block" class="hidden a-label-color-white">
-		<a href="#top" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-			<i class="glyphicon glyphicon-chevron-up"></i><span>100</span>%
-		</a>
-	</span>
+	<div th:replace="common :: #top-link-block"></div>
 	<!-- 导入公共footer -->
 	<div th:replace="common :: #common-footer"></div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/scrollPosStyler.min.js"></script>
+	<script src="js/main.min.js"></script>
 	<script src="js/marked.min.js"></script>
-	<script src="js/nickboyer.js"></script>
-
-
+	<script src="js/nickboyer.min.js"></script>
+	<script src="js/canvas-nest.min.js"></script>
 	<script th:inline="javascript">
 		//以下注释忽略js中关键字符
 		/*<![CDATA[*/

@@ -48,10 +48,10 @@ $(function(){
 /*back to top*/
 function backToTop() {
     $(window).on('scroll', function () {
-		if (($(window).height() + 100) < $(document).height() ) {
-			$('#top-link-block').removeClass('hidden').affix({
-				offset: {top:100}
-			});
+		if ($(window).scrollTop() > 100) {
+			$('#top-link-block').show('fast');
+		}else {
+			$('#top-link-block').hide('fast');
 		}
 		var scrollTop = $(window).scrollTop();
 		var docHeight = $(document).height();

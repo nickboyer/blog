@@ -121,11 +121,17 @@ nickboyer.markdownToCRenderer = function(markdownToC, tocid, startLevel) {
 	
 	var html        = "";    
 	var lastLevel   = 0;
+	var firstLevel  = 1;
+	var map = {};
 	
 	startLevel      = startLevel  || 1;
 	
 	for (var i = 0, len = markdownToC.length; i < len; i++) 
 	{
+		if(map['h'+(lastLevel+1)] == undefined){
+			map['h'+(lastLevel+1)] = 1;
+		}
+
 		var text  = markdownToC[i].text;
 		var level = markdownToC[i].level;
 		
@@ -139,17 +145,34 @@ nickboyer.markdownToCRenderer = function(markdownToC, tocid, startLevel) {
 		}
 		else if (level < lastLevel) 
 		{
-			html += (new Array(lastLevel - level + 2)).join("</ul></li>");
+			html += (new Array(lastLevel - level + 2)).join("</nav>");
 		} 
 		else 
 		{
-			html += "</ul></li>";
+			html += "</nav>";
 		}
-
-		html += "<li><a href=\"#h"+ level+ "-" + text.replace(/\s/g,"") + "\">" + text + "</a><ul  class=\"nav nav-tabs nav-stacked\">";
+		html += "<a class=\"nav-link\" href=\"#h"+ level+ "-" + text.replace(/\s/g,"") + "\">";
+		
+		for(k=1;k<=level;k++){
+			if(k!=level){
+				html += map['h'+k]-1+".";
+			}else{
+				html += map['h'+k] + ".";
+			}
+		}
+		html += " " + text + "</a><nav class=\"nav flex-column\">";
+		if(lastLevel > level){
+			for(var j = (level+1);;j++){
+				if(map['h'+j] == undefined){
+					break;
+				}
+				map['h'+j] = 1;
+			}
+		}
 		lastLevel = level;
+		map['h'+(lastLevel)] = map['h'+(lastLevel)] + 1;
 	}
-	$("#"+tocid).html(html.replace(/\r?\n?\<ul\>\<\/ul\>/g, ""));
+	$("#"+tocid).html(html.replace(/\r?\n?\<nav\>\<\/nav\>/g, ""));
 	
 };
 

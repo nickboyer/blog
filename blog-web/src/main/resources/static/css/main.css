@@ -10,6 +10,9 @@ body {
 	line-height: 2;
 	position: relative;
 }
+.container{
+	max-width:920px;
+}
 a:hover{
 	text-decoration:none;
 }
@@ -54,10 +57,7 @@ a {
 	cursor: pointer;
 }
 .site-brand a {
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-    word-wrap: break-word;
+    color: #fff !important;
 }
 .site-brand a:hover{
 	color:#fff;
@@ -112,6 +112,9 @@ a {
 .padding0 {
 	padding: 0;
 }
+.paddinglr10{
+	padding: 0 10px;
+}
 .paddinglr40{
 	padding: 10px 40px;
 }
@@ -126,25 +129,20 @@ a {
 }
 /* 自适应布局部分 */
 @media (max-width: 992px) {
-	.padding10 {
-		padding: 0;
+	.padding-media{
+		padding-left:0;
+		padding-right:0;
 	}
-	.site-nav-toggle-list {
-		display: none; 
+	.hidden-media{
+		display: none;
 	}
-	h2 {
-		margin: 0px;
+	.site-nav-toggle{
+		display: block;
 	}
 
 }
 @media (min-width: 992px) {
-	.padding10 {
-		padding: 0 10px;
-	}
-	.site-nav-toggle-list {
-		display: block;
-	}
-	.site-nav-toggle {
+	.site-nav-toggle{
 		display: none;
 	}
 }
@@ -209,6 +207,11 @@ a {
 	position: absolute;
 	font-size: 25px;
 }
+.fa-size {
+	text-align:center;
+	width:20px;
+	padding-right:10px;
+}
 
 .menu {
     margin-top: 20px;
@@ -264,9 +267,8 @@ a {
 }
 
 /* 固定图片、目录 */
-.affix.suspend{
-    margin-top:-405px;
-	width: 222.5px;
+.sps.suspend{
+	width: 210px;
 }
 
 /* 返回顶部 */
@@ -332,6 +334,8 @@ pre {
 }
 .pagination .active a{ 
 	background: #555;
+	color: #fff;
+	border-radius: 0;
 }
 .pagination .active a:hover{ 
 	background: #555;
@@ -353,6 +357,10 @@ pre {
 	border-top: 1px solid #e2e1e1;
 	margin-top: 10px;
 	padding: 5px 0px; 0;
+}
+.post-blog-pn-icon{
+	text-align:center;
+	width:20px;
 }
 .post-blog-pn a{
 	color: #999;
@@ -386,7 +394,7 @@ pre {
 	border-bottom: 1px solid #3e3e3e;
 }
 /* 文章目录 */
-.sidebar-nav,.sidebar-content li {
+.sidebar-nav li {
 	list-style: none;
 }
 .sidebar-nav {
@@ -436,46 +444,33 @@ div.sidebar-nav-active {
 }
 
 /* 目录 */
-.site-toc ul {
-	font-size: 13px;
-	padding: 0px 0px 0px 20px;
+.nav-link{
+	padding:0;
 }
-.nav-tabs {
-    border: 0;
+.site-toc{
+	line-height: 1.4;
 }
-.site-toc {
-	margin-top: 50px;
+/* 目录联动 */
+.nav{
+	display:none;
+	padding-left:10px;
 }
-.nav>li.active>a {
-	border: 0;
-	color: #fc6423;
-	border-left: 2px solid #fc6423;
+.navbar a.active + nav{
+	display:block;
 }
-.nav li a{
-	border-radius: 0px;
-	cursor: pointer;
-	border: 0;
-	margin: 0;
-	padding: 3px 0 3px 5px;
-	color: #555;
-	border-left: 2px solid #ffffff;
+.site-toc a{
+	color:#555;
+	padding-left:2px !important;
+	border-left:2px solid #fff;
+	margin: 1px 0 1px 0;
 }
-.nav li a:hover{
-	border: 0;
-	color: #fc6423;
-	background: none;
-	border-left: 2px solid #ffffff;
-
+.site-toc a.active{
+	color:#fc6423;
+	border-left:2px solid #fc6423;
 }
-.nav li.active a:hover {
-	cursor: pointer;
-	border: 0;
-	color: #fc6423;
-	border-left: 2px solid #fc6423;
+.site-toc a:hover{
+	color:#fc6423;
 }
-
-
-
 
 
 @-moz-keyframes dot-flash {
@@ -529,7 +524,7 @@ div.sidebar-nav-active {
 .nickboyer-timeline:before {
     content: "";
     position: absolute;
-    left: 45px;
+    left: 50px;
     top: 10px;
     width: 2px;
     height: 100%;
@@ -546,9 +541,9 @@ div.sidebar-nav-active {
 .nickboyer-timeline-title:before {
     content: " ";
     position: absolute;
-    left: 0;
+    left: 0px;
     top: 50%;
-    margin-left: -15px;
+    margin-left: -10px;
     margin-top: -6px;
     width: 12px;
     height: 12px;
@@ -583,6 +578,7 @@ h3.nickboyer-timeline-title{
 }
 /* 标签 */
 .tags-title h5{
+	font-size:14px;
 	text-align: center;
 	padding: 50px 0 20px 0;
 }
@@ -605,6 +601,7 @@ h3.nickboyer-timeline-title{
 /* 分类 */
 /* 标签 */
 .category-title h5{
+	font-size:14px;
 	text-align: center;
 	padding: 50px 0 20px 0;
 }
@@ -639,10 +636,13 @@ h3.nickboyer-timeline-title{
 .search-header input {
     outline: 0;
     border: none;
-	width: 100%;
+	width:100%;
+}
+.modal-content{
+    border-radius: 0;
 }
 .search-input{
-	padding:0px;
+	padding:0 10px;
 }
 .button-search{
 	background:0;
@@ -650,10 +650,10 @@ h3.nickboyer-timeline-title{
 	outline: 0;
 }
 .search-icon{
-	padding: 3px 5px 0 5px;
+	padding: 0px 0px 0 20px;
 }
 .search-close{
-	padding: 3px 5px 0 5px;
+	padding: 0px 20px 0 0px;
 }
 .search-content li{
 	list-style:none;
@@ -674,6 +674,25 @@ h3.nickboyer-timeline-title{
 #viever-img,.markdown-body img {
 	cursor: pointer;
 }
-::-webkit-scrollbar{width:4px;}
+/* sps */
+.sps {
+	
+}
+.sps--abv{
+	
+}
+.sps--blw{
+	top:10px;
+	position: fixed;
+}
+#top-link-block{
+	position: fixed;
+	right:15px;
+	bottom:15px;
+	display: none;
+}
+
+
+::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background-color:#ffffff;}
 ::-webkit-scrollbar-thumb{background-color:#b5b5b5;}

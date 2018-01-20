@@ -128,7 +128,7 @@ a {
 	padding: 20px 0;
 }
 /* 自适应布局部分 */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
 	.padding-media{
 		padding-left:0;
 		padding-right:0;

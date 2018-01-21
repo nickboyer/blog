@@ -88,19 +88,19 @@
 				<div class="sidebar-nav">
 					<div class="row">
 					<div class="col-6 sidebar-nav-toc">
-						<li class="sidebar-nav-active" data-target="site-toc">文章目录</li>
+						<li id="doc-toc-on-off" data-target="site-toc">文章目录</li>
 					</div>
 					<div class="col-6 sidebar-nav-overview">
-						<li data-target="site-overview">站点概览</li>
+						<li class="sidebar-nav-active" data-target="site-overview">站点概览</li>
 					</div>
 					</div>
 				</div>
 				<div class="sidebar-content">
-					<div class="navbar site-pane site-toc sidebar-nav-active" id="navbar-example">
+					<div class="navbar site-pane site-toc" id="navbar-example">
 						<nav class="navbar-nav" id="doc-toc">
 						</nav>
 					</div>
-					<div class="site-pane site-overview">
+					<div class="site-pane site-overview sidebar-nav-active">
 						<div th:replace="common :: #header-inner"></div>
 						<hr/>
 						<div th:replace="common :: #site-state"></div>
@@ -115,7 +115,7 @@
 					<a class="post-title-link" th:text="${blog.header}"></a>
 				</h2>
 				<div class="post-title post-blog-label a-label-color">
-					<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text" th:text="'发表于 ' + ${#dates.format(blog.updateTime, 'yyyy-MM-dd')}"></span>
+					<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text" th:text="'发表于 ' + ${#dates.format(blog.createTime, 'yyyy-MM-dd')}"></span>
 					<span class="post-blog-text">|</span>
 					<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a th:href="@{'/category?id='+${blog.categoryId}}" th:text="${blog.categoryName}">技术文档</a>
 					<span class="post-blog-text">|</span>

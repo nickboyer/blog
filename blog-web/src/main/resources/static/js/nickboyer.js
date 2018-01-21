@@ -128,12 +128,13 @@ nickboyer.markdownToCRenderer = function(markdownToC, tocid, startLevel) {
 	
 	for (var i = 0, len = markdownToC.length; i < len; i++) 
 	{
-		if(map['h'+(lastLevel+1)] == undefined){
-			map['h'+(lastLevel+1)] = 1;
-		}
 
 		var text  = markdownToC[i].text;
 		var level = markdownToC[i].level;
+
+		if(map['h'+(level)] == undefined){
+			map['h'+(level)] = 1;
+		}
 		
 		if (level < startLevel) {
 			continue;
@@ -154,10 +155,12 @@ nickboyer.markdownToCRenderer = function(markdownToC, tocid, startLevel) {
 		html += "<a class=\"nav-link\" href=\"#h"+ level+ "-" + text.replace(/\s/g,"") + "\">";
 		
 		for(k=1;k<=level;k++){
-			if(k!=level){
-				html += map['h'+k]-1+".";
-			}else{
-				html += map['h'+k] + ".";
+			if(map['h'+k] != undefined){
+				if(k!=level){
+					html += map['h'+k]-1+".";
+				}else{
+					html += map['h'+k] + ".";
+				}
 			}
 		}
 		html += " " + text + "</a><nav class=\"nav flex-column\">";
@@ -166,13 +169,16 @@ nickboyer.markdownToCRenderer = function(markdownToC, tocid, startLevel) {
 				if(map['h'+j] == undefined){
 					break;
 				}
-				map['h'+j] = 1;
+				delete map['h'+j];
 			}
 		}
 		lastLevel = level;
 		map['h'+(lastLevel)] = map['h'+(lastLevel)] + 1;
 	}
-	$("#"+tocid).html(html.replace(/\r?\n?\<nav\>\<\/nav\>/g, ""));
+	if(html != ''){
+		$("#"+tocid).html(html.replace(/\r?\n?\<nav\>\<\/nav\>/g, ""));
+		$("#"+tocid+"-on-off").click();
+	}
 	
 };
 

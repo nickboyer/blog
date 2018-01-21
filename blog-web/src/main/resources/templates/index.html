@@ -103,7 +103,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/scrollPosStyler.min.js"></script>
-	<script src="js/main.min.js"></script>
+	<script src="js/main.js"></script>
 	<script src="js/marked.min.js"></script>
 	<script src="js/nickboyer.min.js"></script>
 	<script src="js/canvas-nest.min.js"></script>
@@ -115,13 +115,14 @@
 			var page = [[${page}]];
 			var list = page.page;
 			$.each(list,function(index,data){
+				
 				var html = 
 				'	<div class="col-md-12">'+
 				'	<h2 class="post-title">'+
 				'		<a class="post-title-link" href="detail?id='+data.id+'">'+data.header+'</a>'+
 				'	</h2>'+
 				'	<div class="post-title post-blog-label a-label-color">'+
-				'		<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于 '+ formatDate(new Date(),'yyyy-MM-dd')+'</span>' +
+				'		<span class="glyphicon glyphicon-book" aria-hidden="true"></span><span class="post-blog-text">发表于 '+ formatDate(new Date(data.createTime),'yyyy-MM-dd')+'</span>' +
 				'		<span class="post-blog-text">|</span>'+
 				'		<span class="glyphicon glyphicon-file" aria-hidden="true"></span><span class="post-blog-text">分类于</span><a href="/category?id='+data.categoryId+'">'+data.categoryName+'</a>'+
 				'		<span class="post-blog-text">|</span>'+

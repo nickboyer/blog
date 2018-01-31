@@ -466,6 +466,11 @@ div.sidebar-nav-active {
 	padding-left:2px !important;
 	border-left:2px solid #fff;
 	margin: 1px 0 1px 0;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all; 
+    white-space: nowrap;
+	
 }
 .site-toc a.active{
 	color:#fc6423;

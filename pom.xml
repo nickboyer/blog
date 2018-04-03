@@ -63,5 +63,6 @@
 		<module>blog-register</module>
 		<module>blog-server</module>
 		<module>blog-web</module>
+		<module>blog-admin</module>
 	</modules>
 </project>

@@ -10,5 +10,6 @@ public class BlogRegisterApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BlogRegisterApplication.class, args);
+
 	}
 }

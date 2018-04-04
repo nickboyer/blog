@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<title>新增</title>
-	<link href="editormd.min.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="layui/css/layui.css">
+	<link href="/editormd.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/layui/css/layui.css"/>
 	<style>
 		.form-menu{
 			cursor: pointer;
@@ -32,18 +32,18 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
-					<input type="checkbox" name="like[write]" title="写作">
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
+					<input type="checkbox" name="like[write]" title="写作"/>
 			</div>
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">
@@ -69,13 +69,13 @@
 					<textarea name="content" id="content" placeholder="请输入正文" class="layui-textarea" rows="20"></textarea>
 				</div>
 			</div>
-		</from>
+		</form>
 	</div>
 
-	<script src="layui/layui.js"></script>
-	<script src="jquery.min.js"></script>
-	<script src="marked.min.js"></script>
-	<script src="nickboyer.js"></script>
+	<script src="/layui/layui.js"></script>
+	<script src="/jquery.min.js"></script>
+	<script src="/marked.min.js"></script>
+	<script src="/nickboyer.js"></script>
 	<script>
 	layui.use(['layer', 'form', 'upload'], function(){
 		var layer = layui.layer,form = layui.form,$=layui.jquery,upload = layui.upload;
@@ -202,7 +202,7 @@
 	});
 		
 	
-	</script> 
+	</script>
 </body>
 
 <div class="layui-row" id="link" style="display:none;">
@@ -210,7 +210,7 @@
 		<div class="layui-form-item layui-form-pane" style="margin:20px;">
 			<label class="layui-form-label">地址</label>
 			<div class="layui-input-block">
-				<input  id="link_value" required lay-verify="required" placeholder="可直接粘贴地址" autocomplete="off" class="layui-input">
+				<input  id="link_value" lay-verify="required" placeholder="可直接粘贴地址" autocomplete="off" class="layui-input"/>
 			</div>
 		</div>
 	</form>
@@ -218,7 +218,7 @@
 <div class="layui-row" id="code" style="display:none;">
 	<form class="layui-form" action="">
 		<div class="layui-form-item layui-form-text"  style="margin:10px 10px 0 10px;">
-			<textarea id="code_value" required lay-verify="required" placeholder="请输入" class="layui-textarea" rows="10"></textarea>
+			<textarea id="code_value" lay-verify="required" placeholder="请输入" class="layui-textarea" rows="10"></textarea>
 		</div>
 	</form>
 </div>
@@ -228,7 +228,7 @@
 		<div class="layui-form-item layui-form-pane" style="margin:20px;">
 			<label class="layui-form-label">图片地址</label>
 			<div class="layui-input-inline">
-				<input id="img_value" required lay-verify="required" placeholder="可直接粘贴地址" autocomplete="off" class="layui-input">
+				<input id="img_value" lay-verify="required" placeholder="可直接粘贴地址" autocomplete="off" class="layui-input"/>
 			</div>
 			<button type="button" class="layui-btn layui-btn-primary" id="uploadBtn">
 				<i class="layui-icon">&#xe67c;</i>上传图片

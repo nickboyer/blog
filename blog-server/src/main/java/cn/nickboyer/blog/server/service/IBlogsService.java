@@ -87,4 +87,9 @@ public interface IBlogsService {
 	 */
 	Categories findCategory(String id);
 
+	/**
+	 *
+	 * @param blogs
+	 */
+    void blogSave(Blogs blogs);
 }

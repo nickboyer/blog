@@ -89,4 +89,13 @@ public class Categorys implements Serializable {
 		this.updateTime = updateTime;
 	}
 
+	@Override
+	public String toString() {
+		return "Categorys{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", createTime=" + createTime +
+				", updateTime=" + updateTime +
+				'}';
+	}
 }

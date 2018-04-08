@@ -11,7 +11,10 @@ package cn.nickboyer.blog.server.mapper;
 
 import java.util.List;
 
+import cn.nickboyer.blog.entry.BlogTagRelation;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import cn.nickboyer.blog.entry.Blogs;
@@ -64,4 +67,13 @@ public interface TagsMapper {
 	@Select("select count(1) from tags")
 	int count();
 
+	/**
+	 *
+	 * @param list
+	 */
+	@Insert({ "<script>","insert into blog_tag_relation (blog_id,tag_id) values ",
+			"<foreach item='item' collection='list' separator=',' open='' close=''>",
+			"(#{item.blogId},#{item.tagId})",
+			"</foreach>", "</script>" })
+    void insertRelation(@Param("list")List<BlogTagRelation> list);
 }

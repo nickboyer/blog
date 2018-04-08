@@ -33,7 +33,7 @@ public class SftpUtil {
 	public static final String username = "mysftp";
 	public static final String pwd = "mysftp";
 	public static final int timeout = 30000;
-	public static final String path = "upload/";
+	public static final String path = "upload/static/";
 
 	public static void upload(InputStream is, String dst) throws JSchException, SftpException {
 
@@ -61,6 +61,6 @@ public class SftpUtil {
 	}
 
 	public static void main(String[] args) throws Exception {
-		upload(new FileInputStream(new File("f://xxx.txt")), "upload/xxx.txt");
+		upload(new FileInputStream(new File("e://abc.txt")), "blog/abc.txt");
 	}
 }

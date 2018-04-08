@@ -10,6 +10,7 @@
 package cn.nickboyer.blog.entry;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -159,6 +160,7 @@ public class Blogs implements Serializable {
 	 */
 	public void setIntroStr(String introStr) {
 		this.introStr = introStr;
+		this.intro = introStr.getBytes();
 	}
 
 	/**
@@ -188,6 +190,7 @@ public class Blogs implements Serializable {
 	 */
 	public void setContentStr(String contentStr) {
 		this.contentStr = contentStr;
+		this.content = contentStr.getBytes();
 	}
 
 	/**
@@ -260,4 +263,24 @@ public class Blogs implements Serializable {
 		this.updateTime = updateTime;
 	}
 
+	@Override
+	public String toString() {
+		return "Blogs{" +
+				"id=" + id +
+				", header='" + header + '\'' +
+				", intro=" + Arrays.toString(intro) +
+				", introStr='" + introStr + '\'' +
+				", content=" + Arrays.toString(content) +
+				", contentStr='" + contentStr + '\'' +
+				", categoryId=" + categoryId +
+				", categoryName='" + categoryName + '\'' +
+				", watch=" + watch +
+				", createTime=" + createTime +
+				", updateTime=" + updateTime +
+				", tags=" + tags +
+				", prev=" + prev +
+				", next=" + next +
+				'}';
+	}
 }
+

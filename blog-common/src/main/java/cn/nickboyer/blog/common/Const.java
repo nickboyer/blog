@@ -21,4 +21,5 @@ public class Const {
 	public static final String VERIFY_CODE = "verifyCode";
 	public static final String REDIS_DICTS = "nickboyer:dict";
 	public static final String SOLR_COLLECTION_NICKBOYER = "nickboyer";
+	public static final String NICKBOYER_LOCATION = "http://www.nickboyer.cn/static/blog/";
 }

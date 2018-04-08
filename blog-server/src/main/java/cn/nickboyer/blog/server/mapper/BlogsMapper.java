@@ -11,9 +11,7 @@ package cn.nickboyer.blog.server.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import cn.nickboyer.blog.entry.Blogs;
 import cn.nickboyer.blog.entry.Tags;
@@ -113,4 +111,11 @@ public interface BlogsMapper {
 	@Select("select id,header,create_time,update_time from blogs where category_id = #{id} order by id desc")
 	List<Blogs> selectListByCategoryId(String id);
 
+	/**
+	 *
+	 * @param blog
+	 */
+	@Insert("insert into blogs (header,intro,content,category_id,category_name,create_time) values(#{header},#{intro},#{content},#{categoryId},#{categoryName},#{createTime})")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
+    void insert(Blogs blog);
 }

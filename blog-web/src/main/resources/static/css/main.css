@@ -303,7 +303,7 @@ a {
 
 /* 首页文章 */
 pre {
-	border: 0px solid #ccc; !importent;
+	border: 0px solid #ccc; !important;
 }
 /* 首页文章分割线 */
 .post-eof {
@@ -359,7 +359,7 @@ a:focus{
 .post-blog-pn {
 	border-top: 1px solid #e2e1e1;
 	margin-top: 10px;
-	padding: 5px 0px; 0;
+	padding: 5px 0px 0;
 }
 .post-blog-pn-icon{
 	text-align:center;

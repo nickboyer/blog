@@ -160,7 +160,7 @@ public class Blogs implements Serializable {
 	 */
 	public void setIntroStr(String introStr) {
 		this.introStr = introStr;
-		this.intro = introStr.getBytes();
+		this.intro = introStr == null ? null : introStr.getBytes();
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class Blogs implements Serializable {
 	 */
 	public void setContentStr(String contentStr) {
 		this.contentStr = contentStr;
-		this.content = contentStr.getBytes();
+		this.content = contentStr == null ? null : contentStr.getBytes();
 	}
 
 	/**

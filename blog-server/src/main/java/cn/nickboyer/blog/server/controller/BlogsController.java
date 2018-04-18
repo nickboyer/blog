@@ -51,6 +51,11 @@ public class BlogsController {
         return blogService.findTags();
     }
 
+    @RequestMapping("/tags")
+    List<Tags> findTagsById(String id) {
+        return blogService.findTagsById(id);
+    }
+
     @RequestMapping("/tag_single")
     Tags findTag(String id) {
         return blogService.findTag(id);

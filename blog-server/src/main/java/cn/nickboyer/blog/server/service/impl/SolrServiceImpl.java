@@ -49,6 +49,7 @@ public class SolrServiceImpl implements ISolrService {
 		query.addHighlightField("header");
 		query.setHighlightSimplePre("<font color='red'>");
 		query.setHighlightSimplePost("</font>");
+		query.setRows(Const.NICKBOYER_SOLR_ROWS);
 		QueryResponse response = null;
 		try {
 			response = solrClient.query(Const.SOLR_COLLECTION_NICKBOYER, query);

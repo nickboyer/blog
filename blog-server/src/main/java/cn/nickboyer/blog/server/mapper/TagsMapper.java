@@ -12,10 +12,7 @@ package cn.nickboyer.blog.server.mapper;
 import java.util.List;
 
 import cn.nickboyer.blog.entry.BlogTagRelation;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import cn.nickboyer.blog.entry.Blogs;
 import cn.nickboyer.blog.entry.Tags;
@@ -76,4 +73,11 @@ public interface TagsMapper {
 			"(#{item.blogId},#{item.tagId})",
 			"</foreach>", "</script>" })
     void insertRelation(@Param("list")List<BlogTagRelation> list);
+
+	/**
+	 * 删除关系
+	 * @param id
+	 */
+	@Delete("delete from blog_tag_relation where blog_id = #{id}")
+    void deleteRelation(Integer id);
 }

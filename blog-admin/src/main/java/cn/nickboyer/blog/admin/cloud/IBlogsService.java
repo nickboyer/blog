@@ -23,6 +23,13 @@ public interface IBlogsService {
     @RequestMapping("/tag")
     List<Tags> findTags();
 
+    /**
+     * 通过blogid获取所有关联标签
+     * @param id
+     * @return
+     */
+    @RequestMapping("/tags")
+    List<Tags> findTagsById(@RequestParam("id") String id);
 
     /**
      * @return
@@ -33,8 +40,16 @@ public interface IBlogsService {
     List<Categories> findCategories();
 
     /**
-     * @param blog
+     * @param blogs
      */
     @RequestMapping("/save")
     void blogSave(@RequestBody(required = false) Blogs blogs);
+
+    /**
+     * 查看详情
+     * @param id
+     * @return
+     */
+    @RequestMapping("/detail")
+    Blogs findDetail(@RequestParam("id") String id);
 }

@@ -18,10 +18,13 @@
 	<div class="layui-container">
 		<blockquote class="layui-elem-quote" style="margin-top:40px;">新增</blockquote>
 		<form class="layui-form layui-form-pane" action="/blog/add/save">
+
+			<input type="hidden" name="id" th:value="${blog== null ? '' : blog.id}"/>
+
 			<div class="layui-form-item">
 				<label class="layui-form-label">输入框</label>
 				<div class="layui-input-block">
-					<input type="text" name="header" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"/>
+					<input type="text" th:value="${blog== null ? '' : blog.header}" name="header" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"/>
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -29,12 +32,12 @@
 				<div class="layui-input-block">
 					<select name="categoryId" lay-verify="required">
 						<option value=""></option>
-						<option  th:each="categories:${categories}" th:value="${categories.id}" th:text="${categories.name }"></option>
+						<option  th:each="categories:${categories}" th:value="${categories.id}" th:text="${categories.name }" th:selected="${blog != null and blog.categoryId == categories.id}"></option>
 					</select>
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<input th:each="tags:${tags}" type="checkbox" name="tags" th:value="${tags.id}" th:title="${tags.name }"/>
+				<input th:each="tags:${tags}" type="checkbox" name="tags" th:value="${tags.id}" th:title="${tags.name }" th:checked="${#lists.contains(blogTags, tags.id)}"/>
 			</div>
 			<div class="layui-form-item layui-form-text">
 				<label class="layui-form-label">
@@ -45,7 +48,7 @@
 					<span style="padding:0 10px;"><i cus_type="intro" class="layui-icon form-menu preview" title="预览">&#xe6b2;</i></span>
 				</label>
 				<div class="layui-input-block">
-					<textarea name="intro" id="intro" placeholder="请输入简介" class="layui-textarea" lay-verify="required"></textarea>
+					<textarea name="intro" id="intro" placeholder="请输入简介" class="layui-textarea" lay-verify="required" th:text="${blog== null ? '' : blog.introStr}"></textarea>
 				</div>
 			</div>
 			<div class="layui-form-item layui-form-text">
@@ -57,7 +60,7 @@
 					<span style="padding:0 10px;"><i cus_type="content" class="layui-icon form-menu preview" title="预览">&#xe6b2;</i></span>
 				</label>
 				<div class="layui-input-block">
-					<textarea name="content" id="content" placeholder="请输入正文" class="layui-textarea" rows="20" lay-verify="required"></textarea>
+					<textarea name="content" id="content" placeholder="请输入正文" class="layui-textarea" rows="20" lay-verify="required" th:text="${blog== null ? '' : blog.contentStr}"></textarea>
 				</div>
 			</div>
 			<div class="align-center" >

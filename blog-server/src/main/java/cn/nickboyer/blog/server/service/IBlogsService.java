@@ -92,4 +92,11 @@ public interface IBlogsService {
 	 * @param blogs
 	 */
     void blogSave(Blogs blogs);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	List<Tags> findTagsById(String id);
 }

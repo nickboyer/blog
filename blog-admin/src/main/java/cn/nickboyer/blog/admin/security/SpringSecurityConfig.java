@@ -28,15 +28,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	private AccessDeniedHandler accessDeniedHandler;
 
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable().authorizeRequests().antMatchers("/", "/home", "/about").permitAll().antMatchers("/admin/**").hasAnyRole("ADMIN").antMatchers("/user/**").hasAnyRole("USER").anyRequest()
-//				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-		http.csrf().disable().authorizeRequests().antMatchers("/", "/home", "/about").permitAll();
+		http.csrf().disable().authorizeRequests().antMatchers("/blog/add").hasAnyRole("nickboyer").anyRequest().authenticated().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+		http.authorizeRequests().and().formLogin().defaultSuccessUrl("/blog/add").permitAll();
 	}
 
-	// create two users admin and user
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER").and().withUser("admin").password("password").roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("nickboyer").password("nickboyer").roles("nickboyer");
 	}
 
 }

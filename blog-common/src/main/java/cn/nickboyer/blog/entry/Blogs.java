@@ -282,5 +282,6 @@ public class Blogs implements Serializable {
 				", next=" + next +
 				'}';
 	}
+
 }
 

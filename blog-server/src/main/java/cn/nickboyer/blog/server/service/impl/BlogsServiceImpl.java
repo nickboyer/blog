@@ -24,7 +24,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -169,9 +168,13 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
         blogs.setCategoryName(categories.getName());
         blogs.setCreateTime(new Date());
 
-        blogsMapper.insert(blogs);
+        if (blogs.getId() == null) {
+            blogsMapper.insert(blogs);
+        }else {
+            blogsMapper.update(blogs);
+            tagsMapper.deleteRelation(blogs.getId());
+        }
         if (blogs.getTags() != null) {
-
 
             List<BlogTagRelation> list = new ArrayList<>();
             BlogTagRelation btr = null;
@@ -183,8 +186,12 @@ public class BlogsServiceImpl extends BaseService implements IBlogsService {
             }
             tagsMapper.insertRelation(list);
         }
+    }
 
+    @Override
+    public List<Tags> findTagsById(String id) {
 
+        return blogsMapper.selectTagsById(id);
     }
 
 }

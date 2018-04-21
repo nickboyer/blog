@@ -29,7 +29,7 @@ public interface BlogsMapper {
      * @authz Kang.Y
      * @createtime 2018年1月3日 下午12:12:51
      */
-    @Select("select * from blogs order by id desc")
+    @Select("select id,header,create_time,category_id,category_name,watch,intro from blogs order by id desc")
     List<Blogs> selectList();
 
     /**

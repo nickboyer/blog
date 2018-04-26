@@ -1,10 +1,10 @@
 /*
  * Copyright 2014 Buyforyou.cn All rights reserved
- * 
+ *
  * @author Kang.Y
- * 
+ *
  * @mail
- * 
+ *
  * @createtime 2018年1月4日 上午12:04:52
  */
 package cn.nickboyer.blog.server.controller;
@@ -26,11 +26,19 @@ import cn.nickboyer.blog.server.service.IRedisService;
 @RequestMapping("/redis")
 public class RedisController {
 
-	@Autowired
-	private IRedisService redisService;
+    @Autowired
+    private IRedisService redisService;
 
-	@RequestMapping("/alldicts")
-	public Map<String, String> findAllDicts() {
-		return redisService.findAllDicts();
-	}
+    @RequestMapping("/alldicts")
+    public Map<String, String> findAllDicts() {
+        return redisService.findAllDicts();
+    }
+
+
+    @RequestMapping("/wechatParams")
+    public Map<String, String> getWechatParams(String id) {
+
+        return redisService.getWechatParams(id);
+
+    }
 }

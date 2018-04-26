@@ -34,7 +34,7 @@ public class BlogController {
     @Autowired
     private IBlogsService blogsService;
 
-    @RequestMapping("/blog/add")
+    @RequestMapping("/add")
     public ModelAndView toAdd(ModelAndView mv, HttpServletRequest request) {
 
         // 参数获取

@@ -4,8 +4,8 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<title>新增</title>
-	<link href="/editormd.min.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="/layui/css/layui.css"/>
+	<link href="editormd.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="layui/css/layui.css"/>
 	<style>
 		.form-menu{
 			cursor: pointer;
@@ -17,7 +17,7 @@
 <body>
 	<div class="layui-container">
 		<blockquote class="layui-elem-quote" style="margin-top:40px;">新增</blockquote>
-		<form class="layui-form layui-form-pane" action="/blog/add/save">
+		<form class="layui-form layui-form-pane" action="blog/add/save">
 
 			<input type="hidden" name="id" th:value="${blog== null ? '' : blog.id}"/>
 
@@ -71,10 +71,10 @@
 		</form>
 	</div>
 
-	<script src="/layui/layui.js"></script>
-	<script src="/jquery.min.js"></script>
-	<script src="/marked.min.js"></script>
-	<script src="/nickboyer.js"></script>
+	<script src="layui/layui.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="marked.min.js"></script>
+	<script src="nickboyer.js"></script>
 	<script>
 	layui.use(['layer', 'form', 'upload'], function(){
 		var layer = layui.layer,form = layui.form,$=layui.jquery,upload = layui.upload;
@@ -172,7 +172,7 @@
 		});
 		var uploadInst = upload.render({
 			elem: '#uploadBtn' //绑定元素
-			,url: '/blog/img/save' //上传接口
+			,url: 'blog/img/save' //上传接口
 			,data:{
 			    type:'blog'
 			}

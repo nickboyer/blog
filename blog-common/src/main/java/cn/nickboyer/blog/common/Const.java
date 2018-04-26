@@ -23,4 +23,6 @@ public class Const {
 	public static final String SOLR_COLLECTION_NICKBOYER = "nickboyer";
 	public static final String NICKBOYER_LOCATION = "http://www.nickboyer.cn/static/blog/";
 	public static final Integer NICKBOYER_SOLR_ROWS = 100;
+	public static final String REDIS_WECHAT_ACCESS_TOKEN = "nickboyer:wechat:access_token";
+	public static final String REDIS_WECHAT_JS_API_TICKET = "nickboyer:wechat:js_api_ticket";
 }

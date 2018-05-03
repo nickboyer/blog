@@ -72,10 +72,10 @@ public class BlogController extends BaseComponent {
 
 	}
 
-	@RequestMapping("/detail/{id}")
-	public ModelAndView detail(ModelAndView mv, HttpServletRequest req, @PathVariable String id) {
+	@RequestMapping("/detail")
+	public ModelAndView detail(ModelAndView mv, HttpServletRequest req) {
 
-//		String id = req.getParameter("id");
+		String id = req.getParameter("id");
 		if (StringUtils.isEmpty(id)) {
 			// 跳转首页
 			Page<Blogs> page = blogsService.findList(new Blogs(), "1", "6");

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +59,6 @@ public class BlogController extends BaseComponent {
 	 */
 	@RequestMapping("/index")
 	public ModelAndView index(ModelAndView mv, HttpServletRequest req) {
-
 		// 获取所有数据
 		String pageNum = StringUtils.isEmpty(req.getParameter("pageNum")) ? "1" : req.getParameter("pageNum");
 		String pageSize = StringUtils.isEmpty(req.getParameter("pageSize")) ? "6" : req.getParameter("pageSize");
@@ -72,10 +72,10 @@ public class BlogController extends BaseComponent {
 
 	}
 
-	@RequestMapping("/detail")
-	public ModelAndView detail(ModelAndView mv, HttpServletRequest req) {
+	@RequestMapping("/detail/{id}")
+	public ModelAndView detail(ModelAndView mv, HttpServletRequest req, @PathVariable String id) {
 
-		String id = req.getParameter("id");
+//		String id = req.getParameter("id");
 		if (StringUtils.isEmpty(id)) {
 			// 跳转首页
 			Page<Blogs> page = blogsService.findList(new Blogs(), "1", "6");

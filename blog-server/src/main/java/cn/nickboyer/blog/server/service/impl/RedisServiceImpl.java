@@ -72,19 +72,5 @@ public class RedisServiceImpl extends BaseService implements IRedisService {
         ops.put(name, value);
     }
 
-    @Override
-    public Map<String, String> getWechatParams(String id) {
 
-        /**
-         * 微信参数
-         * appId 公众号唯一标示
-         * timestamp 生成签名的时间戳
-         * nonceStr 生成签名的随机串
-         * signature 签名
-         */
-        String url = "http://www.nickboyer.cn/detail?id=" + id;
-        JSONObject tokenInfo = wechatService.getAccessToken();
-        JSONObject ticketInfo = wechatService.getJsApiTicket();
-        return null;
-    }
 }

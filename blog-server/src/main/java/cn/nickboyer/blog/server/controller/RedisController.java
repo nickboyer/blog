@@ -34,11 +34,4 @@ public class RedisController {
         return redisService.findAllDicts();
     }
 
-
-    @RequestMapping("/wechatParams")
-    public Map<String, String> getWechatParams(String id) {
-
-        return redisService.getWechatParams(id);
-
-    }
 }

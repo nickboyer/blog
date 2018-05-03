@@ -35,10 +35,4 @@ public interface IRedisService {
      */
     public void addDicts(String name, String value);
 
-    /**
-     * 获取所有的微信参数
-     *
-     * @return
-     */
-    Map<String, String> getWechatParams(String id);
 }

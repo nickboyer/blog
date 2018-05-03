@@ -32,12 +32,5 @@ public interface IRedisService {
      */
     @RequestMapping("/alldicts")
     public Map<String, String> findAllDicts();
-
-
-    /**
-     * 获取微信参数
-     * @return
-     */
-    @RequestMapping("/wechatParams")
-    public Map<String,String> getWechatParams(@RequestParam("id")String id);
+    
 }

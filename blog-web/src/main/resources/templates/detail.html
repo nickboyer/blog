@@ -158,11 +158,13 @@
 	<script src="js/marked.min.js"></script>
 	<script src="js/nickboyer.min.js"></script>
 	<script src="js/canvas-nest.min.js"></script>
-	<script typet="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script typet="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script th:inline="javascript">
 		//以下注释忽略js中关键字符
 		/*<![CDATA[*/
 	    $(function(){
+
+	        /* 加载blog内容 */
 	    	var text = [[${blog.contentStr}]];
 			nickboyer.markdownToHtml("doc-toc","doc-content",text);
 			
@@ -184,7 +186,82 @@
 				});
 				
 			});
-			
+
+			/* 微信分享 */
+            var url = location.href.split('#')[0];
+            $.ajax({
+                type : "get",
+                url : "wechatParams",
+                dataType : "json",
+                async : false,
+                data:{url:url},
+                success : function(data) {
+                    wx.config({
+                        debug: false,////生产环境需要关闭debug模式
+                        appId: data.appId,//appId通过微信服务号后台查看
+                        timestamp: data.timestamp,//生成签名的时间戳
+                        nonceStr: data.nonceStr,//生成签名的随机字符串
+                        signature: data.signature,//签名
+                        jsApiList: [//需要调用的JS接口列表
+                            'checkJsApi',//判断当前客户端版本是否支持指定JS接口
+                            'onMenuShareTimeline',//分享给好友
+                            'onMenuShareAppMessage'//分享到朋友圈
+                        ]
+                    });
+                },
+                error: function(xhr, status, error) {
+                    alert(status);
+                }
+            })
+            wx.ready(function () {
+                var link = window.location.href;
+                var protocol = window.location.protocol;
+                var host = window.location.host;
+                //分享朋友圈
+                wx.onMenuShareTimeline({
+                    title: [[${blog.header}]],
+                    link: link,
+                    imgUrl: 'http://www.nickboyer.cn/static/blog/logo.jpg',// 自定义图标
+                    trigger: function (res) {
+                        // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                        //alert('用户点击发送给朋友');
+                    },
+                    success: function (res) {
+                        //alert('已分享');
+                    },
+                    cancel: function (res) {
+                        //alert('已取消');
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                //分享给好友
+                wx.onMenuShareAppMessage({
+                    title: [[${blog.header}]], // 分享标题
+                    desc: [[${blog.introStr}]], // 分享描述
+                    link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'http://www.nickboyer.cn/static/blog/logo.jpg', // 自定义图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    trigger: function (res) {
+                        // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                        //alert('用户点击发送给朋友');
+                    },
+                    success: function (res) {
+                        //alert('已分享');
+                    },
+                    cancel: function (res) {
+                        //alert('已取消');
+                    },
+                    fail: function (res) {
+                        //alert(JSON.stringify(res));
+                    }
+                });
+                wx.error(function (res) {
+                    alert(res.errMsg);
+                });
+            });
 		});
    		/*]]>*/
 	</script>

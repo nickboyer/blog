@@ -25,4 +25,5 @@ public class Const {
 	public static final Integer NICKBOYER_SOLR_ROWS = 100;
 	public static final String REDIS_WECHAT_ACCESS_TOKEN = "nickboyer:wechat:access_token";
 	public static final String REDIS_WECHAT_JS_API_TICKET = "nickboyer:wechat:js_api_ticket";
+	public static final String NICKBOYER_BASE_URL = "http://192.168.30.151:8080/detail?id=";
 }

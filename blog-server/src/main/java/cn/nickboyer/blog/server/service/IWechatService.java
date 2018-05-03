@@ -11,6 +11,8 @@ package cn.nickboyer.blog.server.service;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.Map;
+
 /**
  * @title
  * @description
@@ -19,14 +21,9 @@ import com.alibaba.fastjson.JSONObject;
 public interface IWechatService {
 
     /**
-     * 获取accessToken
+     * 获取wechat参数
+     * @param url
      * @return
      */
-    JSONObject getAccessToken();
-
-    /**
-     * 获取JsApiTIcket
-     * @return
-     */
-    JSONObject getJsApiTicket();
+    Map<String,String> getWechatParams(String url);
 }
